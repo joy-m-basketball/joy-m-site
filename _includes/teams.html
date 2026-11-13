@@ -1,0 +1,12 @@
+<div class="teams">
+  {%- for team in site.data.teams %}
+  <article class="team-card team-card--{{ team.soort | slugify }}">
+    <div class="team-card__top">
+      <span class="badge{% if team.soort == 'Competitie' %} badge--orange{% endif %}">{{ team.soort }}</span>
+      {%- if team.code and team.code != "" %}<span class="team-card__code">{{ team.code }}</span>{% endif %}
+    </div>
+    <h3 class="team-card__name">{{ team.naam }}</h3>
+    <p>{{ team.omschrijving }}</p>
+  </article>
+  {%- endfor %}
+</div>

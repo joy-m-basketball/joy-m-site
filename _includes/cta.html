@@ -1,0 +1,12 @@
+<section class="cta">
+  <div class="container cta__inner">
+    <div>
+      <h2 class="display cta__title">{{ site.data.home.cta.titel }}</h2>
+      <p>{{ site.data.home.cta.tekst }}</p>
+    </div>
+    <div class="cta__actions">
+      <a class="btn btn--light" href="mailto:{{ site.data.site.email }}?subject=Proeftraining%20Joy-M">{% include icon.html name="mail" %}Proeftraining aanvragen</a>
+      <a class="btn btn--outline-light" href="{{ '/lid-worden/' | relative_url }}">Lid worden</a>
+    </div>
+  </div>
+</section>

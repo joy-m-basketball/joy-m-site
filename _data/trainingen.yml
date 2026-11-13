@@ -1,0 +1,17 @@
+# Trainingstijden per dag
+- dag: Dinsdag
+  trainingen:
+    - tijd: "20:15 – 22:00"
+      groep: Heren (MSE-1), Dames (recreanten) en gemixt (recreanten)
+- dag: Woensdag
+  trainingen:
+    - tijd: "17:30 – 19:00"
+      groep: X12-1 & M16-1
+    - tijd: "19:00 – 20:30"
+      groep: M18-1
+- dag: Vrijdag
+  trainingen:
+    - tijd: "9:45 – 10:45"
+      groep: Walking basketbal
+    - tijd: "17:30 – 19:00"
+      groep: M16-1 & M18-1

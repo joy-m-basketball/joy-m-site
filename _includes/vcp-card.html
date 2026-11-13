@@ -1,0 +1,8 @@
+<aside class="side-card side-card--navy">
+  <span class="side-card__icon">{% include icon.html name="shield" %}</span>
+  <h2 class="side-card__title">Vertrouwens&shy;contactpersoon</h2>
+  <p class="side-card__name">{{ site.data.site.vertrouwenspersoon.naam }}</p>
+  <p>Luistert, denkt mee en kiest geen kant. Je kunt anoniem blijven naar het bestuur.</p>
+  <a class="btn btn--primary btn--block" href="mailto:{{ site.data.site.vertrouwenspersoon.email }}">{% include icon.html name="mail" %}Mail vertrouwelijk</a>
+  <small class="side-card__mail">{{ site.data.site.vertrouwenspersoon.email }}</small>
+</aside>

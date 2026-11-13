@@ -1,0 +1,12 @@
+<section class="page-hero">
+  {%- if include.image %}<img class="page-hero__bg" src="{{ include.image | relative_url }}" alt="" fetchpriority="high">{% endif %}
+  <div class="container page-hero__inner">
+    <nav class="crumbs" aria-label="Kruimelpad">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      {%- if include.parent %}<span aria-hidden="true">/</span><a href="{{ include.parent_url | relative_url }}">{{ include.parent }}</a>{% endif %}
+    </nav>
+    {%- if include.meta %}<p class="page-hero__meta">{{ include.meta }}</p>{% endif %}
+    <h1 class="display page-hero__title">{{ include.title }}</h1>
+    {%- if include.intro %}<p class="page-hero__intro">{{ include.intro }}</p>{% endif %}
+  </div>
+</section>

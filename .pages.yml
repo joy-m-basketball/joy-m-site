@@ -1,0 +1,210 @@
+# Configuratie voor Pages CMS (https://pagescms.org)
+# Log in op https://app.pagescms.org met je GitHub-account en open deze repository.
+
+media:
+  input: assets/uploads
+  output: /assets/uploads
+  categories: [image, document]
+  rename: safe
+
+content:
+  # ---------------------------------------------------------------- Nieuws
+  - name: nieuws
+    label: Nieuws
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Titel
+        type: string
+        required: true
+      - name: date
+        label: Datum
+        type: date
+        required: true
+      - name: image
+        label: Uitgelichte afbeelding
+        type: image
+        description: Wordt getoond in het nieuwsoverzicht en bovenaan het bericht.
+      - name: samenvatting
+        label: Samenvatting
+        type: text
+        description: Korte tekst (1-2 zinnen) voor het nieuwsoverzicht.
+      - name: body
+        label: Bericht
+        type: rich-text
+
+  # ---------------------------------------------------------------- Pagina's
+  - name: paginas
+    label: Pagina's
+    type: collection
+    path: _paginas
+    description: De bestandsnaam bepaalt het webadres, bijv. contact.md wordt /contact/. Nieuwe pagina's voeg je ook toe aan het Menu.
+    view:
+      fields: [title]
+      primary: title
+    fields:
+      - name: title
+        label: Titel
+        type: string
+        required: true
+      - name: intro
+        label: Introductie
+        type: text
+        description: Korte tekst onder de titel bovenaan de pagina.
+      - name: image
+        label: Achtergrondafbeelding
+        type: image
+      - name: body
+        label: Inhoud
+        type: rich-text
+
+  # ---------------------------------------------------------------- Homepage
+  - name: home
+    label: Homepage
+    type: file
+    path: _data/home.yml
+    format: yaml
+    fields:
+      - name: hero
+        label: Bovenste blok
+        type: object
+        fields:
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: afbeelding, label: Foto, type: image }
+      - name: intro
+        label: Welkomstblok
+        type: object
+        fields:
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: afbeelding, label: Foto, type: image }
+      - name: redenen
+        label: Waarom Joy-M (genummerde punten)
+        type: object
+        list: true
+        fields:
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+      - name: cta
+        label: Oranje balk onderaan elke pagina
+        type: object
+        fields:
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+
+  # ---------------------------------------------------------------- Trainingen
+  - name: trainingen
+    label: Trainingstijden
+    type: file
+    path: _data/trainingen.yml
+    format: yaml
+    list: true
+    fields:
+      - name: dag
+        label: Dag
+        type: select
+        options:
+          values: [Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag]
+      - name: trainingen
+        label: Trainingen
+        type: object
+        list: true
+        fields:
+          - { name: tijd, label: "Tijd (bijv. 17:30 – 19:00)", type: string }
+          - { name: groep, label: Team / groep, type: string }
+
+  # ---------------------------------------------------------------- Teams
+  - name: teams
+    label: Teams
+    type: file
+    path: _data/teams.yml
+    format: yaml
+    list: true
+    fields:
+      - { name: naam, label: Naam, type: string, required: true }
+      - { name: code, label: "Teamcode (bijv. M18-1)", type: string }
+      - name: soort
+        label: Soort
+        type: select
+        options:
+          values: [Competitie, Recreatief]
+      - { name: omschrijving, label: Omschrijving, type: text }
+
+  # ---------------------------------------------------------------- FAQ
+  - name: faq
+    label: Veelgestelde vragen
+    type: file
+    path: _data/faq.yml
+    format: yaml
+    list: true
+    fields:
+      - { name: vraag, label: Vraag, type: string, required: true }
+      - { name: antwoord, label: Antwoord, type: text, description: "Je kunt Markdown gebruiken, bijv. [linktekst](/lid-worden/)." }
+
+  # ---------------------------------------------------------------- Menu
+  - name: navigatie
+    label: Menu
+    type: file
+    path: _data/navigatie.yml
+    format: yaml
+    list: true
+    fields:
+      - { name: titel, label: Menutekst, type: string, required: true }
+      - { name: link, label: "Link (bijv. /contact/)", type: string, required: true }
+
+  # ---------------------------------------------------------------- Instellingen
+  - name: instellingen
+    label: Instellingen & contactgegevens
+    type: file
+    path: _data/site.yml
+    format: yaml
+    fields:
+      - { name: naam, label: Naam vereniging, type: string }
+      - { name: plaats, label: Plaats, type: string }
+      - { name: slogan, label: Slogan, type: string }
+      - { name: email, label: E-mailadres, type: string }
+      - name: adres
+        label: Adres sporthal
+        type: object
+        fields:
+          - { name: locatie, label: Naam locatie, type: string }
+          - { name: straat, label: Straat en huisnummer, type: string }
+          - { name: postcode_plaats, label: Postcode en plaats, type: string }
+          - { name: kaart_url, label: Link naar kaart, type: string }
+      - name: vertrouwenspersoon
+        label: Vertrouwenscontactpersoon
+        type: object
+        fields:
+          - { name: naam, label: Naam, type: string }
+          - { name: email, label: E-mailadres, type: string }
+      - { name: aanmeldformulier, label: Link aanmeldformulier, type: string }
+      - name: nbb
+        label: Basketball.nl (NBB)
+        type: object
+        fields:
+          - { name: programma, label: Link programma, type: string }
+          - { name: uitslagen, label: Link uitslagen, type: string }
+          - { name: website, label: Website NBB, type: string }
+      - name: app
+        label: Basketball.nl app
+        type: object
+        fields:
+          - { name: app_store, label: App Store link, type: string }
+          - { name: play_store, label: Google Play link, type: string }
+      - { name: centrum_veilige_sport, label: Link Centrum Veilige Sport, type: string }
+      - name: social
+        label: Social media (laat leeg om te verbergen)
+        type: object
+        fields:
+          - { name: instagram, label: Instagram-link, type: string }
+          - { name: facebook, label: Facebook-link, type: string }

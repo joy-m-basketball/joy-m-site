@@ -1,0 +1,16 @@
+<div class="schedule">
+  {%- for dag in site.data.trainingen %}
+  <article class="day-card">
+    <h3 class="day-card__day">{{ dag.dag }}</h3>
+    <ul>
+      {%- for t in dag.trainingen %}
+      <li>
+        <span class="day-card__time">{% include icon.html name="clock" %}{{ t.tijd }}</span>
+        <span class="day-card__group">{{ t.groep }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </article>
+  {%- endfor %}
+</div>
+<p class="schedule__note">{% include icon.html name="pin" %}Alle trainingen zijn in het {{ site.data.site.adres.locatie }}, {{ site.data.site.adres.straat }}.</p>

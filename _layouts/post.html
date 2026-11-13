@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{%- capture datum %}{% include date.html date=page.date %}{% endcapture -%}
+{% include page-hero.html title=page.title intro=page.samenvatting image=page.image parent="Nieuws" parent_url="/nieuws/" meta=datum %}
+<div class="section section--tight">
+  <article class="container prose prose--article">
+    {% include rich.html html=content %}
+    <p class="back-link"><a href="{{ '/nieuws/' | relative_url }}">&larr; Terug naar alle nieuws</a></p>
+  </article>
+</div>
+{%- assign meer = site.posts | where_exp: "p", "p.url != page.url" | slice: 0, 3 %}
+{%- if meer.size > 0 %}
+<section class="section section--ice">
+  <div class="container">
+    <h2 class="display section__title section__title--sm">Meer nieuws</h2>
+    <div class="news-grid">
+      {%- for p in meer %}{% include news-card.html post=p %}{% endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
+{% include cta.html %}

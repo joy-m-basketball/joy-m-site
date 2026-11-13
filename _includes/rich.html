@@ -1,0 +1,9 @@
+{%- comment -%}
+  Zet interne links (/...) om naar links met de juiste baseurl, zodat de site
+  zowel op een GitHub Pages-projectadres als op een eigen domein werkt.
+  Gebruik: {% include rich.html html=content %} of {% include rich.html md=tekst %}
+{%- endcomment -%}
+{%- assign _href = 'href="' | append: site.baseurl | append: '/' -%}
+{%- assign _src = 'src="' | append: site.baseurl | append: '/' -%}
+{%- if include.md -%}{%- assign _html = include.md | markdownify -%}{%- else -%}{%- assign _html = include.html -%}{%- endif -%}
+{{- _html | replace: 'href="//', 'href="§§' | replace: 'href="/', _href | replace: 'href="§§', 'href="//' | replace: 'src="/', _src -}}

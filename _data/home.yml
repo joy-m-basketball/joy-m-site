@@ -1,0 +1,20 @@
+# Inhoud van de homepage
+hero:
+  titel: Basketbal in Malden
+  tekst: Welkom bij Joy-M, de basketbalclub van Malden! Of je nu een doorgewinterde speler bent of net begint, bij ons is iedereen welkom.
+  afbeelding: /assets/uploads/spelers-tenues.jpg
+intro:
+  titel: Samen leren, sporten en vrienden maken
+  tekst: |
+    We delen niet alleen de passie voor basketbal, maar ook de liefde voor teamwork, plezier en persoonlijke groei. Bij Joy-M draait alles om samen leren, sporten en vrienden maken. Kom snel een keer langs en ontdek de sfeer bij onze club!
+  afbeelding: /assets/uploads/spelers-schieten.jpg
+redenen:
+  - titel: Training en coaching
+    tekst: Ervaren coaches begeleiden spelers van alle niveaus, van beginners tot gevorderden. We trainen 1 of 2 keer per week.
+  - titel: Wedstrijden en toernooien
+    tekst: Speel mee in lokale competities, wedstrijden en toernooien zoals het oliebollentoernooi en het family & friends toernooi.
+  - titel: Een gezellige club
+    tekst: We zijn meer dan een team. Een hechte gemeenschap waar je samenwerkt, elkaar steunt en vriendschappen opbouwt.
+cta:
+  titel: Kom een keer meetrainen!
+  tekst: Proeftraining? Stuur ons een berichtje, dan laten we de trainer weten dat je komt.

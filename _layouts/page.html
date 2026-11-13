@@ -1,0 +1,62 @@
+---
+layout: default
+---
+{% include page-hero.html title=page.title intro=page.intro image=page.image %}
+{%- assign slug = page.slug | default: page.name | remove: '.md' -%}
+<div class="section section--tight">
+  {%- if slug == 'contact' %}
+  <div class="container">
+    {% include contact-cards.html %}
+    <div class="prose prose--center">{% include rich.html html=content %}</div>
+    <h2 class="display section__title section__title--sm">Trainingstijden</h2>
+    {% include trainingen.html %}
+  </div>
+  {%- else %}
+  <div class="container layout-split">
+    <article class="prose">
+      {% include rich.html html=content %}
+    </article>
+    <div class="sidebar">
+      {%- if slug == 'lid-worden' %}
+      <aside class="side-card side-card--orange">
+        <span class="side-card__icon">{% include icon.html name="users" %}</span>
+        <h2 class="side-card__title">Aanmelden</h2>
+        <p>Vul het inschrijfformulier in. Wij zoeken op basis van leeftijd en niveau een geschikt team voor je.</p>
+        <a class="btn btn--light btn--block" href="{{ site.data.site.aanmeldformulier }}" target="_blank" rel="noopener">Naar het aanmeldformulier {% include icon.html name="external" %}</a>
+      </aside>
+      <aside class="side-card">
+        <h2 class="side-card__title">Eerst proberen?</h2>
+        <p>Kom vrijblijvend een keer meetrainen.</p>
+        <a class="btn btn--primary btn--block" href="mailto:{{ site.data.site.email }}?subject=Proeftraining%20Joy-M">{% include icon.html name="mail" %}Proeftraining aanvragen</a>
+        <a class="side-card__link" href="{{ '/teams/#trainingen' | relative_url }}">Bekijk de trainingstijden {% include icon.html name="arrow" %}</a>
+      </aside>
+      {%- elsif slug == 'vertrouwenspersoon' or slug == 'veilig-sporten' %}
+      {% include vcp-card.html %}
+      <aside class="side-card">
+        <h2 class="side-card__title">Buiten de club</h2>
+        <p>Liever iemand die niet bij Joy-M betrokken is? Neem contact op met een vertrouwenscontactpersoon van de basketballbond, of met het Centrum Veilige Sport Nederland.</p>
+        <a class="side-card__link" href="{{ site.data.site.centrum_veilige_sport }}" target="_blank" rel="noopener">Centrum Veilige Sport {% include icon.html name="external" %}</a>
+      </aside>
+      {%- else %}
+      <aside class="side-card side-card--navy">
+        <span class="side-card__icon">{% include icon.html name="heart" %}</span>
+        <h2 class="side-card__title">Kom meetrainen</h2>
+        <p>Iedereen is welkom, van beginner tot gevorderde. Probeer het eerst eens met een proeftraining.</p>
+        <a class="btn btn--primary btn--block" href="mailto:{{ site.data.site.email }}?subject=Proeftraining%20Joy-M">{% include icon.html name="mail" %}Proeftraining aanvragen</a>
+        <a class="side-card__link" href="{{ '/lid-worden/' | relative_url }}">Direct lid worden {% include icon.html name="arrow" %}</a>
+      </aside>
+      {%- endif %}
+    </div>
+  </div>
+  {%- endif %}
+</div>
+{%- if slug == 'over-ons' %}
+<section class="section section--ice">
+  <div class="container">
+    <p class="eyebrow">Veelgestelde vragen</p>
+    <h2 class="display section__title">Goed om te weten</h2>
+    {% include faq.html %}
+  </div>
+</section>
+{%- endif %}
+{% include cta.html %}

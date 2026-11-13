@@ -1,0 +1,20 @@
+<div class="contact-cards">
+  <a class="contact-card" href="mailto:{{ site.data.site.email }}">
+    <span class="contact-card__icon">{% include icon.html name="mail" %}</span>
+    <span class="contact-card__label">E-mail</span>
+    <strong>{{ site.data.site.email }}</strong>
+    <small>Voor vragen, proeftrainingen en lidmaatschap</small>
+  </a>
+  <a class="contact-card" href="{{ site.data.site.adres.kaart_url }}" target="_blank" rel="noopener">
+    <span class="contact-card__icon">{% include icon.html name="pin" %}</span>
+    <span class="contact-card__label">Sporthal</span>
+    <strong>{{ site.data.site.adres.locatie }}</strong>
+    <small>{{ site.data.site.adres.straat }}, {{ site.data.site.adres.postcode_plaats }}</small>
+  </a>
+  <a class="contact-card" href="mailto:{{ site.data.site.vertrouwenspersoon.email }}">
+    <span class="contact-card__icon">{% include icon.html name="shield" %}</span>
+    <span class="contact-card__label">Vertrouwenspersoon</span>
+    <strong>{{ site.data.site.vertrouwenspersoon.naam }}</strong>
+    <small>{{ site.data.site.vertrouwenspersoon.email }}</small>
+  </a>
+</div>

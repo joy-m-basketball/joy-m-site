@@ -1,0 +1,15 @@
+# Hoofdmenu van de website
+- titel: Over ons
+  link: /over-ons/
+- titel: Teams & trainingen
+  link: /teams/
+- titel: Lid worden
+  link: /lid-worden/
+- titel: Nieuws
+  link: /nieuws/
+- titel: Veilig sporten
+  link: /veilig-sporten/
+- titel: Vragen
+  link: /veelgestelde-vragen/
+- titel: Contact
+  link: /contact/

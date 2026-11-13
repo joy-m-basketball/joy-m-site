@@ -1,0 +1,18 @@
+---
+layout: default
+title: Nieuws
+description: Het laatste nieuws van basketbalvereniging Joy-M uit Malden.
+---
+{% include page-hero.html title="Nieuws" intro="Verhalen, uitslagen en updates van Joy-M." image="/assets/uploads/spelers-tenues.jpg" %}
+<section class="section section--tight">
+  <div class="container">
+    {%- if site.posts.size > 0 %}
+    <div class="news-grid">
+      {%- for p in site.posts %}{% include news-card.html post=p %}{% endfor %}
+    </div>
+    {%- else %}
+    <p>Er zijn nog geen nieuwsberichten.</p>
+    {%- endif %}
+  </div>
+</section>
+{% include cta.html %}

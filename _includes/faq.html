@@ -1,0 +1,8 @@
+<div class="faq">
+  {%- for item in site.data.faq %}
+  <details class="faq__item"{% if forloop.first and include.open_first %} open{% endif %}>
+    <summary><span>{{ item.vraag }}</span><span class="faq__icon" aria-hidden="true"></span></summary>
+    <div class="faq__answer prose">{% include rich.html md=item.antwoord %}</div>
+  </details>
+  {%- endfor %}
+</div>

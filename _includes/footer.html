@@ -1,0 +1,42 @@
+<footer class="site-footer">
+  <div class="site-footer__stripe" aria-hidden="true"></div>
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <img src="{{ '/assets/img/logo.svg' | relative_url }}" alt="Logo Joy-M" width="120" height="109" loading="lazy">
+      <p>Joy-M is de basketbalvereniging van {{ site.data.site.plaats }}. Voor jong en oud, recreatief en competitie.</p>
+      {%- if site.data.site.social.instagram != "" or site.data.site.social.facebook != "" %}
+      <div class="social">
+        {%- if site.data.site.social.instagram != "" %}<a href="{{ site.data.site.social.instagram }}" aria-label="Instagram" target="_blank" rel="noopener">{% include icon.html name="instagram" %}</a>{% endif %}
+        {%- if site.data.site.social.facebook != "" %}<a href="{{ site.data.site.social.facebook }}" aria-label="Facebook" target="_blank" rel="noopener">{% include icon.html name="facebook" %}</a>{% endif %}
+      </div>
+      {%- endif %}
+    </div>
+    <div>
+      <h2 class="site-footer__title">Contact</h2>
+      <ul class="site-footer__list">
+        <li>{% include icon.html name="mail" %}<a href="mailto:{{ site.data.site.email }}">{{ site.data.site.email }}</a></li>
+        <li>{% include icon.html name="pin" %}<a href="{{ site.data.site.adres.kaart_url }}" target="_blank" rel="noopener">{{ site.data.site.adres.locatie }}<br>{{ site.data.site.adres.straat }}, {{ site.data.site.adres.postcode_plaats }}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="site-footer__title">Club</h2>
+      <ul class="site-footer__list site-footer__list--plain">
+        {%- for item in site.data.navigatie %}
+        <li><a href="{{ item.link | relative_url }}">{{ item.titel }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2 class="site-footer__title">Veilig sporten</h2>
+      <p>Vertrouwenscontactpersoon {{ site.data.site.vertrouwenspersoon.naam }}</p>
+      <ul class="site-footer__list">
+        <li>{% include icon.html name="shield" %}<a href="mailto:{{ site.data.site.vertrouwenspersoon.email }}">{{ site.data.site.vertrouwenspersoon.email }}</a></li>
+      </ul>
+      <a class="site-footer__more" href="{{ '/vertrouwenspersoon/' | relative_url }}">Meer informatie {% include icon.html name="arrow" %}</a>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <span>&copy; {{ site.time | date: "%Y" }} Basketbalvereniging Joy-M, {{ site.data.site.plaats }}</span>
+    <a href="{{ site.data.site.nbb.website }}" target="_blank" rel="noopener">Aangesloten bij de Nederlandse Basketball Bond</a>
+  </div>
+</footer>

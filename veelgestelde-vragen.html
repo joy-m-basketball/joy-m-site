@@ -1,0 +1,21 @@
+---
+layout: default
+title: Veelgestelde vragen
+description: Antwoorden op veelgestelde vragen over lid worden, meetrainen, competitie spelen, fluiten en tafelen bij Joy-M.
+---
+{% include page-hero.html title="Veelgestelde vragen" intro="Vragen over lid worden, meetrainen of competitie spelen? Hier vind je de antwoorden." image="/assets/uploads/basket-zaal.jpg" %}
+<section class="section section--tight">
+  <div class="container layout-split">
+    <div>{% include faq.html open_first=true %}</div>
+    <div class="sidebar">
+      <aside class="side-card side-card--navy">
+        <span class="side-card__icon">{% include icon.html name="mail" %}</span>
+        <h2 class="side-card__title">Staat je vraag er niet tussen?</h2>
+        <p>Stuur ons een mail. Ook alle coaches en bestuursleden helpen je graag verder.</p>
+        <a class="btn btn--primary btn--block" href="mailto:{{ site.data.site.email }}">{% include icon.html name="mail" %}Mail ons</a>
+        <small class="side-card__mail">{{ site.data.site.email }}</small>
+      </aside>
+    </div>
+  </div>
+</section>
+{% include cta.html %}

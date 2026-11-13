@@ -1,0 +1,113 @@
+---
+layout: default
+body_class: home
+image: /assets/uploads/spelers-tenues.jpg
+---
+{%- assign home = site.data.home -%}
+<section class="hero">
+  <svg class="hero__court" viewBox="0 0 800 600" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="currentColor" stroke-width="3">
+      <circle cx="400" cy="300" r="90"/><circle cx="400" cy="300" r="30"/>
+      <line x1="400" y1="-10" x2="400" y2="610"/>
+      <path d="M-10 120 H120 V480 H-10"/><path d="M120 210 A90 90 0 0 1 120 390"/>
+      <path d="M-10 40 H40 A260 260 0 0 1 40 560 H-10"/>
+      <path d="M810 120 H680 V480 H810"/><path d="M680 210 A90 90 0 0 0 680 390"/>
+      <path d="M810 40 H760 A260 260 0 0 0 760 560 H810"/>
+    </g>
+  </svg>
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow eyebrow--light">Basketbalvereniging Joy-M</p>
+      <h1 class="display hero__title">{{ home.hero.titel }}</h1>
+      <p class="hero__lead">{{ home.hero.tekst }}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="mailto:{{ site.data.site.email }}?subject=Proeftraining%20Joy-M">Proeftraining aanvragen</a>
+        <a class="btn btn--outline-light btn--lg" href="{{ '/teams/#trainingen' | relative_url }}">{% include icon.html name="clock" %}Trainingstijden</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <div class="hero__photo"><img src="{{ home.hero.afbeelding | relative_url }}" alt="Spelers van Joy-M in de nieuwe tenues" width="1024" height="683" fetchpriority="high"></div>
+      <img class="hero__badge" src="{{ '/assets/img/logo.svg' | relative_url }}" alt="" width="180" height="163">
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="container"><div class="stats__inner">
+    <div class="stat"><span class="stat__num">{{ site.data.teams.size }}</span><span class="stat__label">teams</span></div>
+    <div class="stat"><span class="stat__num">{{ site.data.trainingen.size }}</span><span class="stat__label">trainingsdagen per week</span></div>
+    {%- assign comp = site.data.teams | where: "soort", "Competitie" %}
+    <div class="stat"><span class="stat__num">{{ comp.size }}</span><span class="stat__label">competitieteams</span></div>
+    <div class="stat"><span class="stat__num stat__num--word">Alle</span><span class="stat__label">leeftijden &amp; niveaus</span></div>
+  </div></div>
+</div>
+
+<section class="section">
+  <div class="container intro">
+    <div class="intro__media">
+      <img src="{{ home.intro.afbeelding | relative_url }}" alt="Twee spelers van Joy-M schieten op de basket" loading="lazy" width="683" height="1024">
+      <span class="intro__tag">Plezier staat <strong>voorop</strong></span>
+    </div>
+    <div class="intro__text">
+      <p class="eyebrow">Welkom bij Joy-M</p>
+      <h2 class="display section__title">{{ home.intro.titel }}</h2>
+      <div class="prose">{% include rich.html md=home.intro.tekst %}</div>
+      <ul class="reasons">
+        {%- for r in home.redenen %}
+        <li class="reason">
+          <span class="reason__num">{{ forloop.index | prepend: '0' }}</span>
+          <div><h3>{{ r.titel }}</h3><p>{{ r.tekst }}</p></div>
+        </li>
+        {%- endfor %}
+      </ul>
+      <a class="btn btn--navy" href="{{ '/over-ons/' | relative_url }}">Meer over Joy-M {% include icon.html name="arrow" %}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--navy" id="trainingen">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <p class="eyebrow eyebrow--light">Trainingstijden</p>
+        <h2 class="display section__title">Wanneer trainen we?</h2>
+      </div>
+      <a class="btn btn--outline-light" href="{{ '/teams/' | relative_url }}">Alle teams {% include icon.html name="arrow" %}</a>
+    </div>
+    {% include trainingen.html %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <p class="eyebrow">Onze teams</p>
+        <h2 class="display section__title">Voor iedereen een plek</h2>
+      </div>
+      <a class="btn btn--ghost" href="{{ '/lid-worden/' | relative_url }}">Lid worden {% include icon.html name="arrow" %}</a>
+    </div>
+    {% include teams.html %}
+  </div>
+</section>
+
+{% include competitie.html %}
+
+{%- if site.posts.size > 0 %}
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <p class="eyebrow">Nieuws</p>
+        <h2 class="display section__title">Laatste nieuws</h2>
+      </div>
+      <a class="btn btn--ghost" href="{{ '/nieuws/' | relative_url }}">Alle nieuws {% include icon.html name="arrow" %}</a>
+    </div>
+    <div class="news-grid">
+      {%- for p in site.posts limit: 3 %}{% include news-card.html post=p %}{% endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
+
+{% include cta.html %}

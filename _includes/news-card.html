@@ -1,0 +1,12 @@
+{%- assign p = include.post -%}
+<article class="news-card">
+  <a class="news-card__media" href="{{ p.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ p.image | relative_url }}" alt="" loading="lazy" width="640" height="400">
+  </a>
+  <div class="news-card__body">
+    <time class="news-card__date" datetime="{{ p.date | date_to_xmlschema }}">{% include date.html date=p.date %}</time>
+    <h3 class="news-card__title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    <p>{{ p.samenvatting | default: p.excerpt | strip_html | truncatewords: 28 }}</p>
+    <span class="news-card__more">Lees verder {% include icon.html name="arrow" %}</span>
+  </div>
+</article>

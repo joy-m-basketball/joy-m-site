@@ -1,0 +1,29 @@
+<div class="topbar">
+  <div class="container topbar__inner">
+    <a href="mailto:{{ site.data.site.email }}">{% include icon.html name="mail" %}<span>{{ site.data.site.email }}</span></a>
+    <div class="topbar__links">
+      <a href="{{ site.data.site.nbb.uitslagen }}" target="_blank" rel="noopener">Uitslagen</a>
+      <a href="{{ '/vertrouwenspersoon/' | relative_url }}">{% include icon.html name="shield" %}Vertrouwenspersoon</a>
+    </div>
+  </div>
+</div>
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Joy-M basketbal – naar de homepage">
+      <img src="{{ '/assets/img/logo.svg' | relative_url }}" alt="" width="64" height="58">
+      <span class="brand__text"><span class="brand__name">Joy-M</span><span class="brand__sub">Basketbal Malden</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="hoofdmenu" data-nav-toggle>
+      <span class="nav-toggle__bars" aria-hidden="true"></span><span class="sr-only">Menu</span>
+    </button>
+    <nav class="nav" id="hoofdmenu" aria-label="Hoofdmenu" data-nav>
+      <ul>
+        {%- for item in site.data.navigatie %}
+        {%- assign link = item.link | relative_url %}
+        <li><a href="{{ link }}"{% if page.url == item.link or page.url contains item.link and item.link != '/' %} aria-current="page"{% endif %}>{{ item.titel }}</a></li>
+        {%- endfor %}
+      </ul>
+      <a class="btn btn--primary nav__cta" href="mailto:{{ site.data.site.email }}?subject=Proeftraining%20Joy-M">Proeftraining</a>
+    </nav>
+  </div>
+</header>

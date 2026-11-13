@@ -1,0 +1,51 @@
+# Jekyll-configuratie voor de website van basketbalvereniging Joy-M
+# Inhoud wordt beheerd via Pages CMS (zie .pages.yml). Dit bestand hoef je normaal niet aan te passen.
+
+title: Joy-M Basketbal
+description: Joy-M is de basketbalvereniging van Malden. Voor jong en oud, recreatief en competitie. Kom een keer meetrainen!
+lang: nl-NL
+locale: nl_NL
+# url wordt automatisch gezet door GitHub Actions. Gebruik je een eigen domein? Vul dan bijv. "https://joy-m.nl" in.
+url: ""
+baseurl: ""
+logo: /assets/img/logo-512.png
+
+permalink: /nieuws/:year/:title/
+
+collections:
+  paginas:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope: { path: "", type: paginas }
+    values: { layout: page }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "" }
+    values: { image: /assets/uploads/basket-zaal.jpg }
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+feed:
+  path: nieuws/feed.xml
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+sass:
+  style: compressed
+
+exclude:
+  - .pages.yml
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - node_modules
+  - .github

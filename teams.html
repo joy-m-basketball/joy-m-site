@@ -1,0 +1,21 @@
+---
+layout: default
+title: Teams & trainingen
+description: Alle teams van basketbalvereniging Joy-M uit Malden en de trainingstijden in het Feel Fit Center Malden.
+image: /assets/uploads/u18-kampioen.jpg
+---
+{% include page-hero.html title="Teams & trainingen" intro="Van onze jongste spelers tot walking basketbal: bij Joy-M is er voor iedereen een plek, recreatief of in de competitie." image=page.image %}
+<section class="section section--tight">
+  <div class="container">
+    {% include teams.html %}
+  </div>
+</section>
+<section class="section section--navy" id="trainingen">
+  <div class="container">
+    <p class="eyebrow eyebrow--light">Trainingstijden</p>
+    <h2 class="display section__title">Wanneer trainen we?</h2>
+    {% include trainingen.html %}
+  </div>
+</section>
+{% include competitie.html %}
+{% include cta.html %}
