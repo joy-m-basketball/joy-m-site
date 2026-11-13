@@ -26,13 +26,16 @@ Eenmalig instellen:
 
 ### Eigen domein (joy-m.nl)
 
-Pas dit pas aan op het moment dat je wilt overstappen van de huidige WordPress-site:
+De site draait op <https://joy-m.nl>. Het domein en de e-mail staan bij **Hostnet**.
 
-1. **Settings → Pages → Custom domain**: vul `joy-m.nl` (of `www.joy-m.nl`) in.
-2. Zet bij je domeinbeheerder de DNS-records zoals beschreven in de [GitHub-documentatie](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site).
-3. Vul in `_config.yml` bij `url:` `https://joy-m.nl` in.
+1. GitHub: **Settings → Pages → Custom domain**: `joy-m.nl` → *Save*. Zet daarna **Enforce HTTPS** aan.
+2. Hostnet (DNS-beheer van joy-m.nl): vervang de A- en AAAA-records van `joy-m.nl` door:
+   - A: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - AAAA: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+   - `www`: CNAME naar `joy-m-basketball.github.io.`
+3. **Laat de MX-records (e-mail) staan**, anders werkt `vertrouwenspersoon@joy-m.nl` niet meer.
 
-Interne links werken automatisch zowel op `…github.io/joy-m-site/` als op een eigen domein.
+Oude WordPress-adressen (bijv. `/over-joy-m-basketbal/`) verwijzen door naar de nieuwe pagina's; zie de map `oude-adressen/`.
 
 ## Lokaal draaien (voor ontwikkelaars)
 

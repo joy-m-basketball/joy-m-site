@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Doorverwijzen…</title>
+  <link rel="canonical" href="{{ page.naar | absolute_url }}">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url={{ page.naar | relative_url }}">
+  <script>location.replace({{ page.naar | relative_url | jsonify }});</script>
+</head>
+<body>
+  <p>Deze pagina is verhuisd naar <a href="{{ page.naar | relative_url }}">{{ page.naar | absolute_url }}</a>.</p>
+</body>
+</html>

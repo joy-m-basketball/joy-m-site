@@ -5,8 +5,8 @@ title: Joy-M Basketbal
 description: Joy-M is de basketbalvereniging van Malden. Voor jong en oud, recreatief en competitie. Kom een keer meetrainen!
 lang: nl-NL
 locale: nl_NL
-# url wordt automatisch gezet door GitHub Actions. Gebruik je een eigen domein? Vul dan bijv. "https://joy-m.nl" in.
-url: ""
+# Adres van de website (eigen domein, ingesteld bij GitHub Pages)
+url: "https://joy-m.nl"
 baseurl: ""
 logo: /assets/img/logo-512.png
 
