@@ -1,0 +1,25 @@
+---
+layout: default
+title: Wedstrijden & uitslagen
+description: Het actuele wedstrijdprogramma en de uitslagen van alle teams van basketbalvereniging Joy-M uit Malden.
+image: /assets/uploads/u18-kampioen.jpg
+---
+{% include page-hero.html title="Wedstrijden" intro="Het actuele programma en de uitslagen van alle Joy-M teams, rechtstreeks van basketball.nl." image=page.image %}
+<section class="section section--tight">
+  <div class="container" data-wedstrijden="overzicht">
+    <div class="matches-toolbar">
+      <div class="tabs" role="tablist" aria-label="Weergave">
+        <button type="button" class="tab" role="tab" data-tab="programma" aria-selected="true" aria-controls="wedstrijden-lijst">Programma</button>
+        <button type="button" class="tab" role="tab" data-tab="uitslagen" aria-selected="false" aria-controls="wedstrijden-lijst" tabindex="-1">Uitslagen</button>
+      </div>
+      <div class="chips" data-filters aria-label="Filter op team"></div>
+    </div>
+    <div id="wedstrijden-lijst" role="tabpanel" data-output aria-live="polite" aria-busy="true">
+      <p class="matches__loading">Wedstrijden laden…</p>
+    </div>
+    <noscript><p class="matches__empty">Zet JavaScript aan, of bekijk het programma op <a href="{{ site.data.site.nbb.programma }}">basketball.nl</a>.</p></noscript>
+    <p class="matches__source">Bron: <a href="{{ site.data.site.nbb.programma }}" target="_blank" rel="noopener">basketball.nl</a>. Tafel- en scheidsrechtersbeurten vind je in de basketball.nl app.</p>
+  </div>
+</section>
+{% include cta.html %}
+{% include wedstrijden-config.html %}

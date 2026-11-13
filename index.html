@@ -42,6 +42,29 @@ image: /assets/uploads/spelers-tenues.jpg
   </div></div>
 </div>
 
+<section class="section section--tight matchday">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <p class="eyebrow">Wedstrijden</p>
+        <h2 class="display section__title">Wedstrijdschema</h2>
+      </div>
+      <a class="btn btn--ghost" href="{{ '/wedstrijden/' | relative_url }}">Volledig programma {% include icon.html name="arrow" %}</a>
+    </div>
+    <div class="matchday__grid">
+      <div class="matchday__col">
+        <h3 class="matchday__title" data-wedstrijden-titel>Komend weekend</h3>
+        <div data-wedstrijden="weekend" data-limit="5" aria-live="polite" aria-busy="true"><p class="matches__loading">Wedstrijden laden…</p></div>
+      </div>
+      <div class="matchday__col">
+        <h3 class="matchday__title">Laatste uitslagen</h3>
+        <div data-wedstrijden="uitslagen" data-limit="5" aria-live="polite" aria-busy="true"><p class="matches__loading">Uitslagen laden…</p></div>
+        <a class="side-card__link" href="{{ '/wedstrijden/?tab=uitslagen' | relative_url }}">Alle uitslagen {% include icon.html name="arrow" %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container intro">
     <div class="intro__media">
@@ -111,3 +134,4 @@ image: /assets/uploads/spelers-tenues.jpg
 {%- endif %}
 
 {% include cta.html %}
+{% include wedstrijden-config.html %}

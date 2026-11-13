@@ -7,6 +7,9 @@
     </div>
     <h3 class="team-card__name">{{ team.naam }}</h3>
     <p>{{ team.omschrijving }}</p>
+    {%- if team.soort == 'Competitie' and team.code and team.code != "" %}
+    <a class="team-card__link" href="{{ '/wedstrijden/' | relative_url }}?team={{ team.code | url_encode }}">Wedstrijden {% include icon.html name="arrow" %}</a>
+    {%- endif %}
   </article>
   {%- endfor %}
 </div>

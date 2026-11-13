@@ -192,6 +192,8 @@ content:
         label: Basketball.nl (NBB)
         type: object
         fields:
+          - { name: club_id, label: Club-ID (voor live wedstrijden), type: string, description: "Staat in de clublink op basketball.nl: …/clubs/<club-id>/program" }
+          - { name: federation_id, label: Bond-ID (niet wijzigen), type: string }
           - { name: programma, label: Link programma, type: string }
           - { name: uitslagen, label: Link uitslagen, type: string }
           - { name: website, label: Website NBB, type: string }

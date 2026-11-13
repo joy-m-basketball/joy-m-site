@@ -3,14 +3,14 @@
     <div class="competitie__text">
       <p class="eyebrow">Competitie</p>
       <h2 class="display section__title">Programma &amp; uitslagen</h2>
-      <p>Het competitieprogramma en de uitslagen van alle teams van Joy-M vind je op de site van de NBB en in de basketball.nl app. In de app zie je ook je tafel- en scheidsrechtersbeurten.</p>
+      <p>Het programma en de uitslagen van alle Joy-M teams staan live op onze site. In de basketball.nl app vind je ze ook, samen met je tafel- en scheidsrechtersbeurten.</p>
     </div>
     <div class="competitie__links">
-      <a class="link-tile" href="{{ site.data.site.nbb.programma }}" target="_blank" rel="noopener">
-        {% include icon.html name="calendar" %}<span><strong>Programma</strong><small>Alle wedstrijden op basketball.nl</small></span>{% include icon.html name="external" %}
+      <a class="link-tile" href="{{ '/wedstrijden/' | relative_url }}">
+        {% include icon.html name="calendar" %}<span><strong>Programma</strong><small>Alle komende wedstrijden</small></span>{% include icon.html name="arrow" %}
       </a>
-      <a class="link-tile" href="{{ site.data.site.nbb.uitslagen }}" target="_blank" rel="noopener">
-        {% include icon.html name="trophy" %}<span><strong>Uitslagen</strong><small>Alle uitslagen op basketball.nl</small></span>{% include icon.html name="external" %}
+      <a class="link-tile" href="{{ '/wedstrijden/?tab=uitslagen' | relative_url }}">
+        {% include icon.html name="trophy" %}<span><strong>Uitslagen</strong><small>Alle uitslagen van dit seizoen</small></span>{% include icon.html name="arrow" %}
       </a>
       <div class="app-links">
         <a href="{{ site.data.site.app.app_store }}" target="_blank" rel="noopener">{% include icon.html name="phone" %}App Store</a>

@@ -1,7 +1,9 @@
 # Hoofdmenu van de website
 - titel: Over ons
   link: /over-ons/
-- titel: Teams & trainingen
+- titel: Wedstrijden
+  link: /wedstrijden/
+- titel: Teams
   link: /teams/
 - titel: Lid worden
   link: /lid-worden/

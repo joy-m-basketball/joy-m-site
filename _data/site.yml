@@ -13,6 +13,9 @@ vertrouwenspersoon:
   email: vertrouwenspersoon@joy-m.nl
 aanmeldformulier: https://docs.google.com/forms/d/e/1FAIpQLSfZyRbQjRO1NoPsxFklffvwntRYwijmk5xuZBncjvV1J74pWQ/viewform?usp=sharing
 nbb:
+  # Koppeling met basketball.nl (Foys) voor het live wedstrijdprogramma en de uitslagen
+  club_id: c91435bc-9dd5-4f57-bc79-e27b2caa2276
+  federation_id: 52cfa65e-9782-4a81-ab35-e2f981fcb7a9
   programma: https://basketball.nl/basketball/competities/vereniging-zoeken/#/clubs/c91435bc-9dd5-4f57-bc79-e27b2caa2276/program
   uitslagen: https://basketball.nl/basketball/competities/vereniging-zoeken/#/clubs/c91435bc-9dd5-4f57-bc79-e27b2caa2276/results
   website: https://basketball.nl
