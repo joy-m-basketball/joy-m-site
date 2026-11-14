@@ -95,6 +95,13 @@ content:
         fields:
           - { name: titel, label: Titel, type: string }
           - { name: tekst, label: Tekst, type: text }
+      - name: clubshop
+        label: Clubshop-blok
+        type: object
+        fields:
+          - { name: titel, label: Titel, type: string }
+          - { name: tekst, label: Tekst, type: text }
+          - { name: afbeelding, label: Foto, type: image }
       - name: cta
         label: Oranje balk onderaan elke pagina
         type: object
@@ -203,6 +210,7 @@ content:
         fields:
           - { name: app_store, label: App Store link, type: string }
           - { name: play_store, label: Google Play link, type: string }
+      - { name: clubshop, label: Link clubshop (JAKO), type: string }
       - { name: centrum_veilige_sport, label: Link Centrum Veilige Sport, type: string }
       - name: social
         label: Social media (laat leeg om te verbergen)

@@ -1,0 +1,20 @@
+{%- assign shop = site.data.home.clubshop -%}
+<section class="section shop">
+  <div class="container shop__inner">
+    <div class="shop__media">
+      <img src="{{ shop.afbeelding | relative_url }}" alt="Het Joy-M wedstrijdtenue: shirt en short in blauw en wit" loading="lazy" width="1024" height="650">
+      <span class="shop__tag">JAKO <strong>Teamshop</strong></span>
+    </div>
+    <div class="shop__text">
+      <p class="eyebrow">Clubshop</p>
+      <h2 class="display section__title">{{ shop.titel }}</h2>
+      <p>{{ shop.tekst }}</p>
+      <ul class="shop__points">
+        <li>Officiële Joy-M clubkleding</li>
+        <li>Maten voor kinderen, dames en heren</li>
+        <li>Direct online te bestellen</li>
+      </ul>
+      <a class="btn btn--primary btn--lg" href="{{ site.data.site.clubshop }}" target="_blank" rel="noopener">Naar de teamshop {% include icon.html name="external" %}</a>
+    </div>
+  </div>
+</section>

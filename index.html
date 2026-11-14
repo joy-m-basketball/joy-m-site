@@ -47,7 +47,7 @@ image: /assets/uploads/spelers-tenues.jpg
     <div class="section__head">
       <div>
         <p class="eyebrow">Wedstrijden</p>
-        <h2 class="display section__title">Wedstrijdschema</h2>
+        <h2 class="display section__title">Programma &amp; uitslagen</h2>
       </div>
       <a class="btn btn--ghost" href="{{ '/wedstrijden/' | relative_url }}">Volledig programma {% include icon.html name="arrow" %}</a>
     </div>
@@ -60,6 +60,13 @@ image: /assets/uploads/spelers-tenues.jpg
         <h3 class="matchday__title">Laatste uitslagen</h3>
         <div data-wedstrijden="uitslagen" data-limit="5" aria-live="polite" aria-busy="true"><p class="matches__loading">Uitslagen laden…</p></div>
         <a class="side-card__link" href="{{ '/wedstrijden/?tab=uitslagen' | relative_url }}">Alle uitslagen {% include icon.html name="arrow" %}</a>
+      </div>
+    </div>
+    <div class="matchday__foot">
+      <p>Live van basketball.nl. Je tafel- en scheidsrechtersbeurten vind je in de basketball.nl app.</p>
+      <div class="app-links">
+        <a href="{{ site.data.site.app.app_store }}" target="_blank" rel="noopener">{% include icon.html name="phone" %}App Store</a>
+        <a href="{{ site.data.site.app.play_store }}" target="_blank" rel="noopener">{% include icon.html name="phone" %}Google Play</a>
       </div>
     </div>
   </div>
@@ -114,7 +121,7 @@ image: /assets/uploads/spelers-tenues.jpg
   </div>
 </section>
 
-{% include competitie.html %}
+{% include clubshop.html %}
 
 {%- if site.posts.size > 0 %}
 <section class="section">

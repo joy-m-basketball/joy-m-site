@@ -30,6 +30,11 @@ layout: default
         <a class="btn btn--primary btn--block" href="mailto:{{ site.data.site.email }}?subject=Proeftraining%20Joy-M">{% include icon.html name="mail" %}Proeftraining aanvragen</a>
         <a class="side-card__link" href="{{ '/teams/#trainingen' | relative_url }}">Bekijk de trainingstijden {% include icon.html name="arrow" %}</a>
       </aside>
+      <aside class="side-card">
+        <h2 class="side-card__title">Clubkleding</h2>
+        <p>Bestel je Joy-M shirt, short of trainingspak in onze teamshop bij JAKO.</p>
+        <a class="side-card__link" href="{{ site.data.site.clubshop }}" target="_blank" rel="noopener">Naar de clubshop {% include icon.html name="external" %}</a>
+      </aside>
       {%- elsif slug == 'vertrouwenspersoon' or slug == 'veilig-sporten' %}
       {% include vcp-card.html %}
       <aside class="side-card">
