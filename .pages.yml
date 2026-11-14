@@ -128,7 +128,11 @@ content:
         list: true
         fields:
           - { name: tijd, label: "Tijd (bijv. 17:30 – 19:00)", type: string }
-          - { name: groep, label: Team / groep, type: string }
+          - name: teams
+            label: Teams
+            type: string
+            list: true
+            description: "Gebruik precies de teamnaam zoals bij Teams, bijv. U16 of Heren senioren."
 
   # ---------------------------------------------------------------- Teams
   - name: teams

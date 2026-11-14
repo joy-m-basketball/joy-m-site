@@ -6,7 +6,13 @@
       {%- for t in dag.trainingen %}
       <li>
         <span class="day-card__time">{% include icon.html name="clock" %}{{ t.tijd }}</span>
-        <span class="day-card__group">{{ t.groep }}</span>
+        <span class="day-card__teams">
+          {%- for naam in t.teams %}
+          {%- assign team = site.data.teams | where: "naam", naam | first %}
+          <span class="team-chip{% if team.soort == 'Competitie' %} team-chip--comp{% endif %}">{{ naam }}{% if team.code and team.code != "" %}<small>{{ team.code }}</small>{% endif %}</span>
+          {%- endfor %}
+          {%- if t.groep %}<span class="day-card__group">{{ t.groep }}</span>{% endif %}
+        </span>
       </li>
       {%- endfor %}
     </ul>

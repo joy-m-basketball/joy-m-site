@@ -1,17 +1,17 @@
-# Trainingstijden per dag
+# Trainingstijden per dag. Gebruik bij "teams" precies de namen uit Teams (_data/teams.yml).
 - dag: Dinsdag
   trainingen:
     - tijd: "20:15 – 22:00"
-      groep: Heren (MSE-1), Dames (recreanten) en gemixt (recreanten)
+      teams: [Heren senioren, Dames recreanten, Recreanten gemengd]
 - dag: Woensdag
   trainingen:
     - tijd: "17:30 – 19:00"
-      groep: X12-1 & M16-1
+      teams: [U12, U16]
     - tijd: "19:00 – 20:30"
-      groep: M18-1
+      teams: [U18]
 - dag: Vrijdag
   trainingen:
     - tijd: "9:45 – 10:45"
-      groep: Walking basketbal
+      teams: [Walking basketbal]
     - tijd: "18:00 – 19:30"
-      groep: M16-1 & M18-1
+      teams: [U16, U18]

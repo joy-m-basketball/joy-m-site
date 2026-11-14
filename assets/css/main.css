@@ -752,3 +752,13 @@ p { margin: 0 0 1em; }
 .topbar a { white-space: nowrap; }
 @media (max-width: 560px) { .topbar__links { gap: 16px; } }
 @media (max-width: 400px) { .topbar__links .icon { display: none; } }
+
+/* Teamlabels bij de trainingstijden (zelfde namen als in het teamsoverzicht) */
+.day-card__teams { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.team-chip {
+  display: inline-flex; align-items: baseline; gap: 6px; padding: 4px 10px; border-radius: 6px;
+  background: #e3ecf6; color: var(--navy-900); font-weight: 600; font-size: .95rem; line-height: 1.3;
+}
+.team-chip small { font-size: .78rem; font-weight: 700; color: var(--navy); opacity: .75; }
+.team-chip--comp { background: #ffe5d9; }
+.team-chip--comp small { color: var(--orange-dark); }
