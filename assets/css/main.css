@@ -748,10 +748,6 @@ p { margin: 0 0 1em; }
 .contact-jump { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 .contact-jump a { padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--line); font-weight: 600; text-decoration: none; color: var(--navy-900); }
 .contact-jump a:hover { border-color: var(--navy); background: var(--ice); }
-.topbar__short { display: none; }
-@media (max-width: 560px) {
-  .topbar__long { display: none; }
-  .topbar__short { display: inline; }
-  .topbar__links { gap: 16px; }
-}
-@media (max-width: 360px) { .topbar__links .icon { display: none; } .topbar__links { gap: 12px; } }
+.topbar a { white-space: nowrap; }
+@media (max-width: 560px) { .topbar__links { gap: 16px; } }
+@media (max-width: 400px) { .topbar__links .icon { display: none; } }
