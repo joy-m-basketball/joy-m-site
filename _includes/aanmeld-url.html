@@ -1,0 +1,6 @@
+{%- comment -%} Geeft de URL van de aanmeldknop: het FOYS-formulier op /aanmelden/ als dat actief is, anders het oude formulier. {%- endcomment -%}
+{%- if site.data.site.registratieformulier_actief and site.data.site.registratieformulier_id != "" -%}
+{{- '/aanmelden/' | relative_url -}}
+{%- else -%}
+{{- site.data.site.aanmeldformulier -}}
+{%- endif -%}

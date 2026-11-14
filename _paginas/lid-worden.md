@@ -10,14 +10,14 @@ Op deze pagina staat extra informatie over je inschrijving bij Joy-M. Allereerst
 ## Zo werkt het
 
 1. **Proeftraining** – stuur een mail of kom langs bij een training en vraag om een proeftraining.
-2. **Aanmelden** – inschrijven doe je via het aanmeldformulier (Google Forms). Aan de hand van je gegevens zoekt Joy-M op basis van leeftijd en niveau een geschikt team voor je.
+2. **Aanmelden** – inschrijven doe je via het online aanmeldformulier. Aan de hand van je gegevens zoekt Joy-M op basis van leeftijd en niveau een geschikt team voor je.
 3. **Team zoeken** – wanneer er plek is in een team, maken we de inschrijving compleet.
 
 Is er (nog) geen team voor jou? Dan kun je ervoor kiezen om op de wachtlijst te komen; we bewaren dan de ingevulde gegevens. De wachtlijst wordt weer bekeken wanneer het tijd is om nieuwe teams te vormen. Dit gebeurt elk seizoen in maart/april. Wil je niet op de wachtlijst? Dan verwijderen wij de ingevulde gegevens.
 
 ## De basketball.nl app
 
-Voor de inschrijving van een competitiespelend lid is het belangrijk dat je wordt aangemeld in de **basketball.nl app**. Deze app vind je in de [App Store](https://apps.apple.com/nl/app/basketball-nl/id6608973145) en de [Google Play Store](https://play.google.com/store/apps/details?id=tech.foys.nbb). Maak hier een account aan met **hetzelfde e-mailadres** dat je bij de aanmelding via Google Forms hebt opgegeven.
+Voor de inschrijving van een competitiespelend lid is het belangrijk dat je wordt aangemeld in de **basketball.nl app**. Deze app vind je in de [App Store](https://apps.apple.com/nl/app/basketball-nl/id6608973145) en de [Google Play Store](https://play.google.com/store/apps/details?id=tech.foys.nbb). Maak hier een account aan met **hetzelfde e-mailadres** dat je bij de aanmelding hebt opgegeven.
 
 In de app staan alle wedstrijden en uitslagen van het team waarin je wordt ingeschreven, en ook de uitslagen van alle andere Joy-M teams. Daarnaast worden hier je tafel- en scheidsrechtersbeurten weergegeven.
 

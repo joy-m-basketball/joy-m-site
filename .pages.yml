@@ -194,7 +194,15 @@ content:
         fields:
           - { name: naam, label: Naam, type: string }
           - { name: email, label: E-mailadres, type: string }
-      - { name: aanmeldformulier, label: Link aanmeldformulier, type: string }
+      - name: registratieformulier_id
+        label: Registratieformulier – identifier (club.basketball.nl)
+        type: string
+        description: "Staat bovenaan de instellingenkaart van het registratieformulier in club.basketball.nl. Test het formulier daarna op joy-m.nl/aanmelden/."
+      - name: registratieformulier_actief
+        label: Registratieformulier gebruiken voor aanmelden
+        type: boolean
+        description: "Aan: alle aanmeldknoppen gaan naar het formulier op /aanmelden/. Uit: de knoppen gaan naar de link hieronder (Google Forms)."
+      - { name: aanmeldformulier, label: Link oud aanmeldformulier (Google Forms), type: string }
       - name: nbb
         label: Basketball.nl (NBB)
         type: object

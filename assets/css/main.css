@@ -644,3 +644,31 @@ p { margin: 0 0 1em; }
   .shop__media { margin-left: 12px; }
   .shop__tag { right: 8px; }
 }
+
+/* ---------- FOYS-registratieformulier: huisstijl ---------- */
+.regform-layout { display: grid; gap: 32px; max-width: 960px; }
+.regform-aside { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.regform {
+  min-width: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(20px, 4vw, 40px); box-shadow: var(--shadow);
+}
+.regform .registration-form { font-family: var(--font-body); color: var(--ink); font-size: 1rem; padding-inline: 0; max-width: none; }
+.regform .registration-form h1 {
+  font-family: var(--font-display); font-weight: 800; font-style: italic; text-transform: uppercase;
+  color: var(--navy); font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: .6em;
+}
+.regform .registration-form label { font-weight: 600; color: var(--navy-900); }
+.regform .registration-form a { color: var(--navy); }
+.regform .registration-form .form-control:focus { border-color: var(--orange); box-shadow: 0 0 0 .2rem rgb(254 80 0 / .25); }
+/* De site-knopstijl (.btn) niet laten doorwerken in het FOYS-formulier */
+.regform .registration-form .btn {
+  transform: none; text-transform: none; letter-spacing: 0; min-height: 44px; padding: .55rem 1.25rem;
+  font: 700 1rem/1.2 var(--font-body); border-radius: 8px; border: 2px solid var(--navy);
+  background: var(--white); color: var(--navy); isolation: auto;
+}
+.regform .registration-form .btn::before { content: none; }
+.regform .registration-form .btn:hover { background: var(--ice); color: var(--navy); transform: none; }
+.regform .registration-form .btn-primary,
+.regform .registration-form button[type="submit"] { background: var(--orange); border-color: var(--orange); color: var(--white); }
+.regform .registration-form .btn-primary:hover,
+.regform .registration-form button[type="submit"]:hover { background: var(--orange-600); border-color: var(--orange-600); color: var(--white); }

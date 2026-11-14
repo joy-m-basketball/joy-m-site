@@ -1,0 +1,57 @@
+---
+layout: default
+title: Aanmelden
+description: Meld je aan als lid van basketbalvereniging Joy-M uit Malden.
+sitemap: false
+---
+{% include page-hero.html title="Aanmelden" intro="Vul het formulier in. Je gegevens komen direct in onze ledenadministratie; daarna zoeken we op basis van leeftijd en niveau een team voor je." parent="Lid worden" parent_url="/lid-worden/" %}
+<section class="section section--tight">
+  <div class="container regform-layout">
+    <div class="regform">
+      {%- assign formid = site.data.site.registratieformulier_id | strip -%}
+      {%- if formid != "" %}
+      <registration-form-entry configuration="{{ formid | escape }}"></registration-form-entry>
+      <noscript><p class="matches__empty">Zet JavaScript aan om het aanmeldformulier te gebruiken, of mail ons via {{ site.data.site.email }}.</p></noscript>
+      {%- else %}
+      <p class="matches__empty">Het online aanmeldformulier is nog niet ingesteld. Meld je voorlopig aan via <a href="{{ site.data.site.aanmeldformulier }}" target="_blank" rel="noopener">dit formulier</a>.</p>
+      {%- endif %}
+    </div>
+    <div class="regform-aside">
+      <aside class="side-card">
+        <h2 class="side-card__title">Goed om te weten</h2>
+        <p>Je gegevens worden vertrouwelijk verwerkt en voor een deel doorgegeven aan de Nederlandse Basketball Bond.</p>
+        <a class="side-card__link" href="{{ '/lid-worden/' | relative_url }}">Hoe werkt lid worden? {% include icon.html name="arrow" %}</a>
+      </aside>
+      <aside class="side-card side-card--navy">
+        <span class="side-card__icon">{% include icon.html name="mail" %}</span>
+        <h2 class="side-card__title">Eerst proberen?</h2>
+        <p>Kom vrijblijvend een keer meetrainen voordat je je aanmeldt.</p>
+        <a class="btn btn--primary btn--block" href="mailto:{{ site.data.site.email }}?subject=Proeftraining%20Joy-M">Proeftraining aanvragen</a>
+      </aside>
+    </div>
+  </div>
+</section>
+{%- if formid != "" %}
+{%- comment -%} FOYS-registratieformulier (club.basketball.nl). Bootstrap-bestanden zijn nodig omdat de site zelf geen Bootstrap gebruikt; alle FOYS-CSS is afgeschermd binnen .registration-form. {%- endcomment -%}
+<link rel="stylesheet" href="https://registration-form.foys.tech/foys-bootstrap.min.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-vue@2.23.1/dist/bootstrap-vue.min.css">
+<link rel="stylesheet" href="https://registration-form.foys.tech/chunk-vendors.css">
+<link rel="stylesheet" href="https://registration-form.foys.tech/app.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+<script src="https://registration-form.foys.tech/chunk-vendors.js"></script>
+<script src="https://registration-form.foys.tech/app.js"></script>
+<script>
+  // Laat een melding zien als het formulier niet laadt (bijv. door een verkeerde identifier)
+  setTimeout(function () {
+    var box = document.querySelector('.regform');
+    var form = box && box.querySelector('.registration-form');
+    if (form && form.children.length) return;
+    var p = document.createElement('p');
+    p.className = 'matches__empty';
+    p.innerHTML = 'Het aanmeldformulier kon niet worden geladen. Probeer het later opnieuw, of meld je aan via <a href="{{ site.data.site.aanmeldformulier }}" target="_blank" rel="noopener">dit formulier</a> of mail <a href="mailto:{{ site.data.site.email }}">{{ site.data.site.email }}</a>.';
+    box.appendChild(p);
+  }, 8000);
+</script>
+{%- endif %}

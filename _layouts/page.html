@@ -22,7 +22,11 @@ layout: default
         <span class="side-card__icon">{% include icon.html name="users" %}</span>
         <h2 class="side-card__title">Aanmelden</h2>
         <p>Vul het inschrijfformulier in. Wij zoeken op basis van leeftijd en niveau een geschikt team voor je.</p>
-        <a class="btn btn--light btn--block" href="{{ site.data.site.aanmeldformulier }}" target="_blank" rel="noopener">Naar het aanmeldformulier {% include icon.html name="external" %}</a>
+        {%- if site.data.site.registratieformulier_actief and site.data.site.registratieformulier_id != "" %}
+        <a class="btn btn--light btn--block" href="{% include aanmeld-url.html %}">Naar het aanmeldformulier {% include icon.html name="arrow" %}</a>
+        {%- else %}
+        <a class="btn btn--light btn--block" href="{% include aanmeld-url.html %}" target="_blank" rel="noopener">Naar het aanmeldformulier {% include icon.html name="external" %}</a>
+        {%- endif %}
       </aside>
       <aside class="side-card">
         <h2 class="side-card__title">Eerst proberen?</h2>
