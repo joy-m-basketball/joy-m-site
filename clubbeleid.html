@@ -1,0 +1,31 @@
+---
+layout: default
+title: Clubbeleid
+description: Veilig sporten, de vertrouwenspersoon, de voorwaarden en de privacyverklaring van basketbalvereniging Joy-M.
+image: /assets/uploads/bal-zaal.jpg
+---
+{% include page-hero.html title="Clubbeleid" intro="Afspraken en hulp voor een veilige, eerlijke en fijne club. Hier vind je alles over veilig sporten, onze vertrouwenspersoon, de voorwaarden van het lidmaatschap en hoe we met je gegevens omgaan." image=page.image %}
+{% include clubbeleid-nav.html %}
+<section class="section section--tight">
+  <div class="container">
+    <div class="beleid-cards">
+      {%- for b in site.data.clubbeleid %}
+      <a class="beleid-card" href="{{ b.link | relative_url }}">
+        <span class="beleid-card__icon">{% include icon.html name=b.icoon %}</span>
+        <h2 class="beleid-card__title">{{ b.titel }}</h2>
+        <p>{{ b.omschrijving }}</p>
+        <span class="beleid-card__more">Lees meer {% include icon.html name="arrow" %}</span>
+      </a>
+      {%- endfor %}
+    </div>
+    <div class="beleid-vcp">
+      <span class="beleid-vcp__icon">{% include icon.html name="shield" %}</span>
+      <div>
+        <h2>Zit je ergens mee?</h2>
+        <p>Onze vertrouwenscontactpersoon <strong>{{ site.data.site.vertrouwenspersoon.naam }}</strong> luistert, denkt mee en kiest geen kant. Je kunt anoniem blijven naar het bestuur.</p>
+      </div>
+      <a class="btn btn--primary" href="mailto:{{ site.data.site.vertrouwenspersoon.email }}">{% include icon.html name="mail" %}Mail vertrouwelijk</a>
+    </div>
+  </div>
+</section>
+{% include cta.html %}

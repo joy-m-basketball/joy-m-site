@@ -1,8 +1,14 @@
 ---
 layout: default
 ---
-{% include page-hero.html title=page.title intro=page.intro image=page.image %}
 {%- assign slug = page.slug | default: page.name | remove: '.md' -%}
+{%- assign beleid = site.data.clubbeleid | where: "link", page.url | first -%}
+{%- if beleid %}
+{% include page-hero.html title=page.title intro=page.intro image=page.image parent="Clubbeleid" parent_url="/clubbeleid/" %}
+{% include clubbeleid-nav.html %}
+{%- else %}
+{% include page-hero.html title=page.title intro=page.intro image=page.image %}
+{%- endif %}
 <div class="section section--tight">
   {%- if slug == 'contact' %}
   <div class="container">
@@ -17,7 +23,9 @@ layout: default
       {% include rich.html html=content %}
     </article>
     <div class="sidebar">
-      {%- if slug == 'lid-worden' %}
+      {%- if beleid %}
+      {% include clubbeleid-sidebar.html %}
+      {%- elsif slug == 'lid-worden' %}
       <aside class="side-card side-card--orange">
         <span class="side-card__icon">{% include icon.html name="users" %}</span>
         <h2 class="side-card__title">Aanmelden</h2>
@@ -55,23 +63,6 @@ layout: default
         <a class="side-card__link" href="{{ '/teams/#trainingen' | relative_url }}">Trainingstijden {% include icon.html name="arrow" %}</a><br>
         <a class="side-card__link" href="{{ '/wedstrijden/' | relative_url }}">Wedstrijden {% include icon.html name="arrow" %}</a>
       </aside>
-      {%- elsif slug == 'privacyverklaring' or slug == 'voorwaarden' %}
-      <aside class="side-card side-card--navy">
-        <span class="side-card__icon">{% include icon.html name="mail" %}</span>
-        <h2 class="side-card__title">Vragen?</h2>
-        <p>Over je gegevens of je lidmaatschap: mail het bestuur.</p>
-        <a class="btn btn--primary btn--block" href="mailto:{{ site.data.site.email }}">{% include icon.html name="mail" %}Mail ons</a>
-        <small class="side-card__mail">{{ site.data.site.email }}</small>
-      </aside>
-      <aside class="side-card">
-        <h2 class="side-card__title">Zie ook</h2>
-        {%- if slug == 'voorwaarden' %}
-        <a class="side-card__link" href="{{ '/privacyverklaring/' | relative_url }}">Privacyverklaring {% include icon.html name="arrow" %}</a>
-        {%- else %}
-        <a class="side-card__link" href="{{ '/voorwaarden/' | relative_url }}">Voorwaarden {% include icon.html name="arrow" %}</a>
-        {%- endif %}<br>
-        <a class="side-card__link" href="{{ '/veilig-sporten/' | relative_url }}">Veilig sporten &amp; gedragscode {% include icon.html name="arrow" %}</a>
-      </aside>
       {%- elsif slug == 'clubshop' %}
       <aside class="side-card side-card--orange">
         <span class="side-card__icon">{% include icon.html name="heart" %}</span>
@@ -83,13 +74,6 @@ layout: default
         <h2 class="side-card__title">Vragen over kleding?</h2>
         <p>Over maten, tenues of je bestelling: mail ons gerust.</p>
         <a class="side-card__link" href="mailto:{{ site.data.site.email }}?subject=Clubkleding">{{ site.data.site.email }}</a>
-      </aside>
-      {%- elsif slug == 'vertrouwenspersoon' or slug == 'veilig-sporten' %}
-      {% include vcp-card.html %}
-      <aside class="side-card">
-        <h2 class="side-card__title">Buiten de club</h2>
-        <p>Liever iemand die niet bij Joy-M betrokken is? Neem contact op met een vertrouwenscontactpersoon van de basketballbond, of met het Centrum Veilige Sport Nederland.</p>
-        <a class="side-card__link" href="{{ site.data.site.centrum_veilige_sport }}" target="_blank" rel="noopener">Centrum Veilige Sport {% include icon.html name="external" %}</a>
       </aside>
       {%- else %}
       <aside class="side-card side-card--navy">

@@ -1,0 +1,17 @@
+# Pagina's in het onderdeel Clubbeleid (volgorde = volgorde in de navigatie)
+- titel: Veilig sporten
+  link: /veilig-sporten/
+  icoon: heart
+  omschrijving: Ons beleid tegen grensoverschrijdend gedrag, wat je kunt doen als er iets gebeurt en onze gedragscode.
+- titel: Vertrouwenspersoon
+  link: /vertrouwenspersoon/
+  icoon: shield
+  omschrijving: Iemand die luistert en met je meedenkt, voor iedereen die bij Joy-M betrokken is.
+- titel: Voorwaarden
+  link: /voorwaarden/
+  icoon: doc
+  omschrijving: De afspraken die gelden voor je lidmaatschap, zoals contributie, verplichtingen en opzeggen.
+- titel: Privacyverklaring
+  link: /privacyverklaring/
+  icoon: lock
+  omschrijving: Welke gegevens we van je verwerken, waarom we dat doen en welke rechten je hebt.

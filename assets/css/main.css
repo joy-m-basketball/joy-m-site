@@ -674,3 +674,74 @@ p { margin: 0 0 1em; }
 .regform .registration-form button[type="submit"]:hover { background: var(--orange-600); border-color: var(--orange-600); color: var(--white); }
 .site-footer__legal { display: flex; flex-wrap: wrap; gap: 6px 20px; }
 .side-card .app-links a { font-size: .9rem; }
+
+/* ---------- Banner (bijv. "in aanbouw") ---------- */
+.site-banner {
+  position: relative; background: #fff4ec; color: var(--navy-900); font-size: .92rem;
+  border-bottom: 1px solid #fbd9c4;
+}
+.site-banner::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+  background: repeating-linear-gradient(-45deg, var(--orange) 0 10px, var(--navy) 10px 20px);
+}
+.site-banner__inner { display: flex; align-items: center; gap: 12px; padding-block: 10px 8px; padding-top: 14px; }
+.site-banner p { margin: 0; flex: 1; line-height: 1.4; }
+.site-banner a { font-weight: 700; color: var(--orange-dark); white-space: nowrap; }
+.site-banner__icon .icon { fill: var(--orange); width: 18px; height: 18px; display: block; }
+.site-banner__close {
+  flex: none; display: grid; place-items: center; width: 36px; height: 36px; margin: -6px -8px -6px 0;
+  border: 0; background: none; border-radius: 8px; cursor: pointer; color: var(--muted);
+}
+.site-banner__close:hover { background: rgb(1 31 59 / .06); color: var(--navy-900); }
+.site-banner__close .icon { width: 18px; height: 18px; }
+.site-banner[hidden] { display: none; }
+
+/* ---------- Clubbeleid ---------- */
+.beleid-nav { background: var(--white); border-bottom: 1px solid var(--line); position: relative; z-index: 2; margin-top: -1px; }
+.beleid-nav__inner { display: flex; align-items: center; gap: 8px 20px; padding-block: 12px; overflow-x: auto; scrollbar-width: none; }
+.beleid-nav__inner::-webkit-scrollbar { display: none; }
+.beleid-nav__home {
+  flex: none; font-family: var(--font-display); font-weight: 800; font-style: italic; text-transform: uppercase;
+  color: var(--navy); text-decoration: none; font-size: 1.05rem; padding-right: 20px; border-right: 1px solid var(--line);
+}
+.beleid-nav__home.is-active, .beleid-nav__home:hover { color: var(--orange-dark); }
+.beleid-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; }
+.beleid-nav ul a {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; white-space: nowrap;
+  font-weight: 600; color: var(--navy-900); text-decoration: none; border: 1.5px solid transparent;
+}
+.beleid-nav ul a .icon { fill: var(--orange); width: 18px; height: 18px; }
+.beleid-nav ul a:hover { border-color: var(--line); background: var(--ice); }
+.beleid-nav ul a[aria-current="page"] { background: var(--navy); color: var(--white); }
+.beleid-nav ul a[aria-current="page"] .icon { fill: #ffb48f; }
+
+.beleid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.beleid-card {
+  position: relative; display: flex; flex-direction: column; padding: 28px; border-radius: var(--radius);
+  background: var(--white); border: 1px solid var(--line); color: var(--ink); text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.beleid-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; color: var(--ink); }
+.beleid-card__icon { display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 12px; background: var(--navy); margin-bottom: 18px; }
+.beleid-card:nth-child(2) .beleid-card__icon { background: var(--orange); }
+.beleid-card__icon .icon { fill: var(--white); width: 26px; height: 26px; }
+.beleid-card__title { font-size: 1.35rem; }
+.beleid-card p { color: var(--muted); font-size: 1rem; }
+.beleid-card__more { margin-top: auto; display: inline-flex; align-items: center; gap: .4em; font-weight: 700; color: var(--navy); }
+.beleid-card:hover .beleid-card__more { color: var(--orange-dark); }
+.beleid-vcp {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; margin-top: 32px; padding: 28px 32px;
+  border-radius: var(--radius); background: var(--navy); color: #dbe6f3;
+}
+.beleid-vcp > div { flex: 1 1 320px; }
+.beleid-vcp h2 { color: var(--white); font-size: 1.4rem; margin-bottom: .3em; }
+.beleid-vcp p { margin: 0; }
+.beleid-vcp strong { color: var(--white); }
+.beleid-vcp__icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 14px; background: var(--orange); flex: none; }
+.beleid-vcp__icon .icon { fill: var(--white); width: 28px; height: 28px; }
+.site-footer__vcp { margin: 18px 0 8px; }
+
+/* Lange (samengestelde) woorden in koppen netjes afbreken, kolommen niet laten uitrekken */
+.layout-split > * { min-width: 0; }
+.display, .prose h2, .prose h3, .side-card__title, .page-hero__title { overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
+@media (max-width: 560px) { .page-hero__title { font-size: clamp(2rem, 9.5vw, 2.6rem); } }

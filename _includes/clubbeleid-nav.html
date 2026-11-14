@@ -1,0 +1,10 @@
+<nav class="beleid-nav" aria-label="Clubbeleid">
+  <div class="container beleid-nav__inner">
+    <a class="beleid-nav__home{% if page.url == '/clubbeleid/' %} is-active{% endif %}" href="{{ '/clubbeleid/' | relative_url }}"{% if page.url == '/clubbeleid/' %} aria-current="page"{% endif %}>Clubbeleid</a>
+    <ul>
+      {%- for b in site.data.clubbeleid %}
+      <li><a href="{{ b.link | relative_url }}"{% if page.url == b.link %} aria-current="page"{% endif %}>{% include icon.html name=b.icoon %}<span>{{ b.titel }}</span></a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</nav>

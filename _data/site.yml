@@ -31,3 +31,8 @@ centrum_veilige_sport: https://centrumveiligesport.nl
 social:
   instagram: ""
   facebook: ""
+# Smalle balk bovenaan elke pagina (bijv. "website in aanbouw")
+banner:
+  tonen: true
+  tekst: Onze nieuwe website is nog in aanbouw. Mis je iets of zie je een foutje?
+  linktekst: Laat het ons weten

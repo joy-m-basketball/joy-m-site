@@ -1,3 +1,14 @@
+{%- assign _banner = site.data.site.banner -%}
+{%- if _banner and _banner.tonen %}
+<div class="site-banner" data-banner hidden>
+  <div class="container site-banner__inner">
+    <span class="site-banner__icon">{% include icon.html name="tools" %}</span>
+    <p>{{ _banner.tekst }}{% if _banner.linktekst and _banner.linktekst != "" %} <a href="mailto:{{ site.data.site.email }}?subject=Website%20Joy-M">{{ _banner.linktekst }}</a>{% endif %}</p>
+    <button type="button" class="site-banner__close" data-banner-close aria-label="Melding sluiten">{% include icon.html name="close" %}</button>
+  </div>
+</div>
+<script>try{if(sessionStorage.getItem('joym-banner')!=='weg'){document.querySelector('[data-banner]').hidden=false}}catch(e){document.querySelector('[data-banner]').hidden=false}</script>
+{%- endif %}
 <div class="topbar">
   <div class="container topbar__inner">
     <a href="mailto:{{ site.data.site.email }}">{% include icon.html name="mail" %}<span>{{ site.data.site.email }}</span></a>
@@ -20,7 +31,11 @@
       <ul>
         {%- for item in site.data.navigatie %}
         {%- assign link = item.link | relative_url %}
-        <li><a href="{{ link }}"{% if page.url == item.link or page.url contains item.link and item.link != '/' %} aria-current="page"{% endif %}>{{ item.titel }}</a></li>
+        {%- assign _actief = false %}
+        {%- if page.url == item.link %}{% assign _actief = true %}{% endif %}
+        {%- if item.link != '/' and page.url contains item.link %}{% assign _actief = true %}{% endif %}
+        {%- if item.link == '/clubbeleid/' %}{% assign _in_beleid = site.data.clubbeleid | where: "link", page.url | first %}{% if _in_beleid %}{% assign _actief = true %}{% endif %}{% endif %}
+        <li><a href="{{ link }}"{% if _actief %} aria-current="page"{% endif %}>{{ item.titel }}</a></li>
         {%- endfor %}
       </ul>
       <a class="btn btn--primary nav__cta" href="mailto:{{ site.data.site.email }}?subject=Proeftraining%20Joy-M">Proeftraining</a>

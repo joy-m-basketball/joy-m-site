@@ -158,6 +158,23 @@ content:
       - { name: vraag, label: Vraag, type: string, required: true }
       - { name: antwoord, label: Antwoord, type: text, description: "Je kunt Markdown gebruiken, bijv. [linktekst](/lid-worden/)." }
 
+  # ---------------------------------------------------------------- Clubbeleid
+  - name: clubbeleid
+    label: Clubbeleid (overzicht)
+    type: file
+    path: _data/clubbeleid.yml
+    format: yaml
+    list: true
+    fields:
+      - { name: titel, label: Titel, type: string, required: true }
+      - { name: link, label: "Link (bijv. /voorwaarden/)", type: string, required: true }
+      - name: icoon
+        label: Icoon
+        type: select
+        options:
+          values: [heart, shield, doc, lock, users, mail]
+      - { name: omschrijving, label: Korte omschrijving, type: text }
+
   # ---------------------------------------------------------------- Menu
   - name: navigatie
     label: Menu
@@ -220,6 +237,13 @@ content:
           - { name: play_store, label: Google Play link, type: string }
       - { name: clubshop, label: Link clubshop (JAKO), type: string }
       - { name: centrum_veilige_sport, label: Link Centrum Veilige Sport, type: string }
+      - name: banner
+        label: Banner bovenaan de site
+        type: object
+        fields:
+          - { name: tonen, label: Banner tonen, type: boolean }
+          - { name: tekst, label: Tekst, type: string }
+          - { name: linktekst, label: Linktekst (opent een e-mail aan de club), type: string }
       - name: social
         label: Social media (laat leeg om te verbergen)
         type: object

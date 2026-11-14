@@ -23,6 +23,22 @@
     window.matchMedia('(min-width: 1241px)').addEventListener('change', function (mq) { if (mq.matches) setOpen(false); });
   }
 
+  var banner = document.querySelector('[data-banner]');
+  var bannerClose = document.querySelector('[data-banner-close]');
+  if (banner && bannerClose) {
+    bannerClose.addEventListener('click', function () {
+      banner.hidden = true;
+      try { sessionStorage.setItem('joym-banner', 'weg'); } catch (e) {}
+    });
+  }
+
+  // Clubbeleid-navigatie: actieve pagina in beeld schuiven op smalle schermen
+  var beleidActive = document.querySelector('.beleid-nav ul a[aria-current="page"]');
+  if (beleidActive) {
+    var strip = beleidActive.closest('.beleid-nav__inner');
+    strip.scrollLeft = beleidActive.offsetLeft - (strip.clientWidth - beleidActive.offsetWidth) / 2;
+  }
+
   if (header) {
     var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
     window.addEventListener('scroll', onScroll, { passive: true });

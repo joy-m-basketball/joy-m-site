@@ -27,16 +27,20 @@
       </ul>
     </div>
     <div>
-      <h2 class="site-footer__title">Veilig sporten</h2>
-      <p>Vertrouwenscontactpersoon {{ site.data.site.vertrouwenspersoon.naam }}</p>
+      <h2 class="site-footer__title">Clubbeleid</h2>
+      <ul class="site-footer__list site-footer__list--plain">
+        {%- for b in site.data.clubbeleid %}
+        <li><a href="{{ b.link | relative_url }}">{{ b.titel }}</a></li>
+        {%- endfor %}
+      </ul>
+      <p class="site-footer__vcp">Vertrouwenscontactpersoon {{ site.data.site.vertrouwenspersoon.naam }}</p>
       <ul class="site-footer__list">
         <li>{% include icon.html name="shield" %}<a href="mailto:{{ site.data.site.vertrouwenspersoon.email }}">{{ site.data.site.vertrouwenspersoon.email }}</a></li>
       </ul>
-      <a class="site-footer__more" href="{{ '/vertrouwenspersoon/' | relative_url }}">Meer informatie {% include icon.html name="arrow" %}</a>
     </div>
   </div>
   <div class="container site-footer__bottom">
     <span>&copy; {{ site.time | date: "%Y" }} Basketbalvereniging Joy-M, {{ site.data.site.plaats }}</span>
-    <span class="site-footer__legal"><a href="{{ '/privacyverklaring/' | relative_url }}">Privacyverklaring</a><a href="{{ '/voorwaarden/' | relative_url }}">Voorwaarden</a><a href="{{ site.data.site.nbb.website }}" target="_blank" rel="noopener">Aangesloten bij de NBB</a></span>
+    <span class="site-footer__legal"><a href="{{ site.data.site.nbb.website }}" target="_blank" rel="noopener">Aangesloten bij de NBB</a></span>
   </div>
 </footer>
