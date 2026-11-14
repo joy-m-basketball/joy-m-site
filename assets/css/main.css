@@ -672,3 +672,5 @@ p { margin: 0 0 1em; }
 .regform .registration-form button[type="submit"] { background: var(--orange); border-color: var(--orange); color: var(--white); }
 .regform .registration-form .btn-primary:hover,
 .regform .registration-form button[type="submit"]:hover { background: var(--orange-600); border-color: var(--orange-600); color: var(--white); }
+.site-footer__legal { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.side-card .app-links a { font-size: .9rem; }

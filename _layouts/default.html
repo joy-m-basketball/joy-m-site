@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
+  {%- if page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
   <meta name="theme-color" content="#034078">
   <link rel="preload" href="{{ '/assets/fonts/saira-800-italic.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/barlow-400.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>

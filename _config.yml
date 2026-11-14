@@ -24,6 +24,9 @@ defaults:
     values: { layout: post }
   - scope: { path: "" }
     values: { image: /assets/uploads/basket-zaal.jpg }
+  # De bedankpagina (na het aanmeldformulier) niet in Google en de sitemap
+  - scope: { path: "_paginas/bedankt.md" }
+    values: { sitemap: false, robots: noindex }
 
 plugins:
   - jekyll-seo-tag
