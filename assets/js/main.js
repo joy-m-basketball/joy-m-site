@@ -20,7 +20,7 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) { setOpen(false); toggle.focus(); }
     });
-    window.matchMedia('(min-width: 1101px)').addEventListener('change', function (mq) { if (mq.matches) setOpen(false); });
+    window.matchMedia('(min-width: 1241px)').addEventListener('change', function (mq) { if (mq.matches) setOpen(false); });
   }
 
   if (header) {

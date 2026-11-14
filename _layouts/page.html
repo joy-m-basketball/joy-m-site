@@ -33,7 +33,19 @@ layout: default
       <aside class="side-card">
         <h2 class="side-card__title">Clubkleding</h2>
         <p>Bestel je Joy-M shirt, short of trainingspak in onze teamshop bij JAKO.</p>
-        <a class="side-card__link" href="{{ site.data.site.clubshop }}" target="_blank" rel="noopener">Naar de clubshop {% include icon.html name="external" %}</a>
+        <a class="side-card__link" href="{{ '/clubshop/' | relative_url }}">Naar de clubshop {% include icon.html name="arrow" %}</a>
+      </aside>
+      {%- elsif slug == 'clubshop' %}
+      <aside class="side-card side-card--orange">
+        <span class="side-card__icon">{% include icon.html name="heart" %}</span>
+        <h2 class="side-card__title">JAKO Teamshop</h2>
+        <p>Bekijk het actuele assortiment en bestel direct online.</p>
+        <a class="btn btn--light btn--block" href="{{ site.data.site.clubshop }}" target="_blank" rel="noopener">Naar de teamshop {% include icon.html name="external" %}</a>
+      </aside>
+      <aside class="side-card">
+        <h2 class="side-card__title">Vragen over kleding?</h2>
+        <p>Over maten, tenues of je bestelling: mail ons gerust.</p>
+        <a class="side-card__link" href="mailto:{{ site.data.site.email }}?subject=Clubkleding">{{ site.data.site.email }}</a>
       </aside>
       {%- elsif slug == 'vertrouwenspersoon' or slug == 'veilig-sporten' %}
       {% include vcp-card.html %}

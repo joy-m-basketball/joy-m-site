@@ -145,18 +145,18 @@ p { margin: 0 0 1em; }
 .nav { display: flex; align-items: center; gap: 22px; }
 .nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
 .nav ul a {
-  position: relative; display: block; padding: 10px 11px;
+  position: relative; display: block; padding: 10px 9px;
   font-weight: 600; font-size: 1rem; color: var(--navy-900); text-decoration: none; white-space: nowrap;
 }
 .nav ul a::after {
-  content: ""; position: absolute; left: 11px; right: 11px; bottom: 4px; height: 3px;
+  content: ""; position: absolute; left: 9px; right: 9px; bottom: 4px; height: 3px;
   background: var(--orange); transform: scaleX(0) skewX(var(--skew)); transform-origin: left; transition: transform .2s ease;
 }
 .nav ul a:hover::after, .nav ul a[aria-current="page"]::after { transform: scaleX(1) skewX(var(--skew)); }
 .nav ul a[aria-current="page"] { color: var(--navy); }
 .nav-toggle { display: none; }
 
-@media (max-width: 1100px) {
+@media (max-width: 1240px) {
   :root { --header-h: 72px; }
   .brand img { width: 52px; }
   .nav-toggle {
