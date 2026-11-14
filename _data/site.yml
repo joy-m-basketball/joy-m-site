@@ -14,7 +14,7 @@ vertrouwenspersoon:
 # Registratieformulier uit club.basketball.nl (FOYS). Zet eerst de identifier en test op /aanmelden/;
 # zet daarna registratieformulier_actief op true om de aanmeldknoppen ernaar te laten wijzen.
 registratieformulier_id: "7b892fd3-386c-43b9-fc75-08df427cc74b"
-registratieformulier_actief: false
+registratieformulier_actief: true
 aanmeldformulier: https://docs.google.com/forms/d/e/1FAIpQLSfZyRbQjRO1NoPsxFklffvwntRYwijmk5xuZBncjvV1J74pWQ/viewform?usp=sharing
 nbb:
   # Koppeling met basketball.nl (Foys) voor het live wedstrijdprogramma en de uitslagen
