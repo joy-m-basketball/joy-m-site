@@ -745,3 +745,6 @@ p { margin: 0 0 1em; }
 .layout-split > * { min-width: 0; }
 .display, .prose h2, .prose h3, .side-card__title, .page-hero__title { overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
 @media (max-width: 560px) { .page-hero__title { font-size: clamp(2rem, 9.5vw, 2.6rem); } }
+.contact-jump { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.contact-jump a { padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--line); font-weight: 600; text-decoration: none; color: var(--navy-900); }
+.contact-jump a:hover { border-color: var(--navy); background: var(--ice); }

@@ -14,7 +14,34 @@ layout: default
   <div class="container">
     {% include contact-cards.html %}
     <div class="prose prose--center">{% include rich.html html=content %}</div>
-    <h2 class="display section__title section__title--sm">Trainingstijden</h2>
+    <nav class="contact-jump" aria-label="Op deze pagina">
+      <a href="#vragen">Veelgestelde vragen</a>
+      <a href="#trainingstijden">Trainingstijden</a>
+    </nav>
+  </div>
+</div>
+<section class="section section--ice" id="vragen">
+  <div class="container layout-split">
+    <div>
+      <p class="eyebrow">Veelgestelde vragen</p>
+      <h2 class="display section__title">Goed om te weten</h2>
+      {% include faq.html open_first=true %}
+    </div>
+    <div class="sidebar">
+      <aside class="side-card side-card--navy">
+        <span class="side-card__icon">{% include icon.html name="mail" %}</span>
+        <h2 class="side-card__title">Staat je vraag er niet tussen?</h2>
+        <p>Stuur ons een mail. Ook alle coaches en bestuursleden helpen je graag verder.</p>
+        <a class="btn btn--primary btn--block" href="mailto:{{ site.data.site.email }}">{% include icon.html name="mail" %}Mail ons</a>
+        <small class="side-card__mail">{{ site.data.site.email }}</small>
+      </aside>
+    </div>
+  </div>
+</section>
+<div class="section section--tight" id="trainingstijden">
+  <div class="container">
+    <p class="eyebrow">Trainingstijden</p>
+    <h2 class="display section__title section__title--sm" style="margin-top:0">Kom langs in de sporthal</h2>
     {% include trainingen.html %}
   </div>
   {%- else %}
