@@ -15,6 +15,10 @@
     <div class="topbar__links">
       <a href="{{ '/wedstrijden/' | relative_url }}">{% include icon.html name="calendar" %}Wedstrijden</a>
       <a href="{{ '/teams/#trainingen' | relative_url }}">{% include icon.html name="clock" %}Trainingen</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Donkere modus aan/uit" title="Donkere modus aan/uit">
+        <span class="theme-toggle__moon">{% include icon.html name="moon" %}</span>
+        <span class="theme-toggle__sun">{% include icon.html name="sun" %}</span>
+      </button>
     </div>
   </div>
 </div>
