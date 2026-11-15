@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Handleiding website beheren – Joy-M</title>
+<!-- Bron van de PDF-handleiding. Opnieuw maken: zie docs/handleiding/README.md -->
+<style>
+  @font-face { font-family: "Saira"; src: url("../../assets/fonts/saira-800-italic.woff2") format("woff2"); font-weight: 800; font-style: italic; }
+  @font-face { font-family: "Barlow"; src: url("../../assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Barlow"; src: url("../../assets/fonts/barlow-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "Barlow"; src: url("../../assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Barlow"; src: url("../../assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+  :root {
+    --navy: #034078; --navy-900: #011f3b; --orange: #fe5000; --orange-dark: #cc2d02;
+    --ice: #f2f5f9; --line: #dfe4eb; --ink: #0d1b2a; --muted: #536173;
+  }
+  @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+  @page :first { margin: 0; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font: 10.5pt/1.55 "Barlow", system-ui, sans-serif; color: var(--ink); background: #fff; }
+  h1, h2, h3 { color: var(--navy-900); line-height: 1.15; }
+  h1, h2 { font-family: "Saira", "Arial Black", sans-serif; font-weight: 800; font-style: italic; text-transform: uppercase; }
+  h2 { font-size: 20pt; color: var(--navy); margin: 0 0 4mm; }
+  h2::after { content: ""; display: block; width: 14mm; height: 1.4mm; margin-top: 2mm; background: var(--orange); transform: skewX(-12deg); }
+  h3 { font-size: 13pt; margin: 5mm 0 2mm; }
+  p { margin: 0 0 3mm; }
+  a { color: var(--navy); }
+  strong { color: var(--navy-900); }
+  code, .kbd { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 9.5pt; background: var(--ice); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+  .btnlabel { display: inline-block; font-weight: 700; font-size: 9pt; padding: 1px 7px; border-radius: 4px; background: #1f883d; color: #fff; white-space: nowrap; }
+  .btnlabel--cms { background: #16a34a; }
+  .btnlabel--light { background: #fff; color: var(--ink); border: 1px solid #c8ced6; }
+  .page { break-before: page; }
+  .avoid { break-inside: avoid; }
+
+  /* Voorpagina */
+  .cover { height: 297mm; padding: 0; position: relative; overflow: hidden; color: #fff;
+    background: radial-gradient(120mm 90mm at 85% 18%, #0a5aa3 0%, transparent 60%), linear-gradient(160deg, var(--navy) 0%, var(--navy-900) 100%); }
+  .cover::after { content: ""; position: absolute; left: -10%; right: -10%; bottom: 52mm; height: 4mm; background: var(--orange); transform: rotate(-4deg); }
+  .cover__inner { position: absolute; left: 20mm; right: 20mm; top: 38mm; }
+  .cover img { width: 46mm; margin-bottom: 14mm; filter: drop-shadow(0 4mm 6mm rgb(0 0 0 / .35)); }
+  .cover h1 { color: #fff; font-size: 40pt; margin: 0 0 6mm; line-height: 1; }
+  .cover .sub { font-size: 15pt; color: #dbe6f3; max-width: 140mm; }
+  .cover .eyebrow { color: #ffb48f; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 10pt; margin-bottom: 4mm; }
+  .cover__foot { position: absolute; left: 20mm; right: 20mm; bottom: 18mm; font-size: 10pt; color: #b7c6d8; display: flex; justify-content: space-between; }
+
+  /* Blokken */
+  .lead { font-size: 12pt; color: var(--muted); }
+  .card { border: 1px solid var(--line); border-radius: 3mm; padding: 4mm 5mm; margin: 3mm 0 4mm; background: #fff; }
+  .card--ice { background: var(--ice); border-color: var(--ice); }
+  .card--navy { background: var(--navy); border-color: var(--navy); color: #dbe6f3; }
+  .card--navy h3, .card--navy strong { color: #fff; }
+  .tip, .warn, .note { border-radius: 3mm; padding: 3mm 4mm 3mm 13mm; margin: 3mm 0 4mm; position: relative; break-inside: avoid; }
+  .tip { background: #e8f3ec; } .warn { background: #fff1ea; } .note { background: var(--ice); }
+  .tip::before, .warn::before, .note::before { position: absolute; left: 4mm; top: 2.6mm; font-weight: 800; font-size: 12pt; }
+  .tip::before { content: "✓"; color: #1d7a45; } .warn::before { content: "!"; color: var(--orange-dark); left: 5.2mm; } .note::before { content: "i"; color: var(--navy); left: 5.4mm; font-style: italic; font-family: Georgia, serif; }
+  .tip p:last-child, .warn p:last-child, .note p:last-child { margin: 0; }
+
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 3mm 0 4mm; }
+  ol.steps > li { counter-increment: s; position: relative; padding: 0 0 2mm 11mm; break-inside: avoid; }
+  ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: -.3mm; width: 7mm; height: 7mm; display: grid; place-items: center;
+    font: 800 italic 11pt "Saira", sans-serif; color: #fff; background: var(--navy); border-radius: 1.6mm; transform: skewX(-10deg); }
+
+  .route { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin: 3mm 0; }
+  .route .card { margin: 0; }
+  .route h3 { margin-top: 0; }
+  .badge { display: inline-block; font-size: 8pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .6mm 2.4mm; border-radius: 1.2mm; background: #ffe5d9; color: var(--orange-dark); }
+  .badge--blue { background: #e3ecf6; color: var(--navy); }
+
+  figure { margin: 3mm 0 5mm; break-inside: avoid; }
+  figure img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 2mm; }
+  figcaption { font-size: 9pt; color: var(--muted); margin-top: 1.6mm; }
+  .shot { position: relative; display: inline-block; width: 100%; }
+  .shot--narrow { width: 62%; }
+  .mark { position: absolute; border: .7mm solid var(--orange); border-radius: 1.6mm; box-shadow: 0 0 0 200mm rgb(1 31 59 / 0); }
+  .mark span { position: absolute; left: 100%; top: 50%; transform: translate(3mm, -50%); white-space: nowrap; background: var(--orange); color: #fff; font-weight: 700; font-size: 8.5pt; padding: .8mm 2.4mm; border-radius: 1.2mm; }
+  .mark span.l { left: auto; right: 100%; transform: translate(-3mm, -50%); }
+  .mark span.t { left: 0; top: 0; transform: translateY(calc(-100% - 1mm)); }
+  .mark span.b { left: 0; top: 100%; transform: translateY(1mm); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; align-items: start; }
+
+  table { width: 100%; border-collapse: collapse; margin: 3mm 0 4mm; font-size: 9.3pt; }
+  th, td { text-align: left; vertical-align: top; padding: 1.2mm 2.4mm; border-bottom: 1px solid var(--line); }
+  th { background: var(--navy); color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 700; color: var(--navy-900); white-space: nowrap; }
+
+  /* Schematische weergave van Pages CMS */
+  .mock { border: 1px solid #cfd6df; border-radius: 2.4mm; overflow: hidden; background: #fff; font-size: 8.8pt; position: relative; break-inside: avoid; margin: 3mm 0 1.5mm; }
+  .mock__bar { display: flex; gap: 1.4mm; align-items: center; padding: 2mm 3mm; background: #eef1f4; border-bottom: 1px solid #dde3ea; }
+  .mock__bar i { width: 2.4mm; height: 2.4mm; border-radius: 50%; background: #c9d0d8; display: block; }
+  .mock__bar b { margin-left: 3mm; font-weight: 600; color: #6b7785; font-size: 8pt; }
+  .mock__body { display: grid; grid-template-columns: 46mm 1fr; }
+  .mock__side { background: #fafbfc; border-right: 1px solid #e6eaef; padding: 3mm 2.5mm; }
+  .mock__repo { font-weight: 700; color: #1f2937; margin-bottom: .6mm; }
+  .mock__branch { color: #6b7785; font-size: 8pt; margin-bottom: 3mm; }
+  .mock__side ul { list-style: none; margin: 0; padding: 0; }
+  .mock__side li { padding: .7mm 2mm; border-radius: 1.4mm; color: #374151; }
+  .mock__side li.on { background: #e5e7eb; font-weight: 700; color: #111827; }
+  .mock__side li.sep { border-top: 1px solid #e6eaef; margin-top: 1mm; padding-top: 1.2mm; color: #6b7785; }
+  .mock__main { padding: 4mm 5mm; }
+  .mock__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3mm; }
+  .mock__head strong { font-size: 11pt; color: #111827; }
+  .mock__btn { display: inline-block; padding: 1.2mm 3.4mm; border-radius: 1.4mm; background: #111827; color: #fff; font-weight: 700; font-size: 8.5pt; }
+  .mock__btn--ghost { background: #fff; color: #111827; border: 1px solid #cfd6df; }
+  .mock__row { display: flex; justify-content: space-between; padding: 2mm 2.6mm; border: 1px solid #e6eaef; border-radius: 1.4mm; margin-bottom: 1.6mm; }
+  .mock__row span:last-child { color: #6b7785; }
+  .mock label { display: block; font-weight: 700; color: #374151; margin: 2.4mm 0 .8mm; font-size: 8.5pt; }
+  .mock .in { border: 1px solid #d5dbe2; border-radius: 1.4mm; padding: 1.5mm 2.2mm; color: #111827; background: #fff; min-height: 6.6mm; }
+  .mock .in.big { min-height: 20mm; }
+  .mock .in.muted { color: #9aa5b1; }
+  .mock .tb { display: flex; gap: 2.2mm; border: 1px solid #d5dbe2; border-bottom: 0; border-radius: 1.4mm 1.4mm 0 0; padding: 1.2mm 2.2mm; color: #6b7785; font-weight: 700; background: #f6f7f9; }
+  .mock .tb + .in { border-radius: 0 0 1.4mm 1.4mm; }
+  .mock .group { border: 1px dashed #cfd6df; border-radius: 1.6mm; padding: 2mm 3mm 3mm; margin-top: 2mm; }
+  .mock .chips span { display: inline-block; border: 1px solid #d5dbe2; border-radius: 1.2mm; padding: .6mm 2mm; margin: 0 1mm 1mm 0; }
+  .mock .callout { position: absolute; background: var(--orange); color: #fff; font-weight: 700; font-size: 8pt; padding: .8mm 2.4mm; border-radius: 1.2mm; }
+  .mock .ring { outline: .6mm solid var(--orange); outline-offset: .6mm; }
+  .schem { font-size: 8.5pt; color: var(--muted); font-style: italic; margin-bottom: 5mm; }
+
+  .toc { counter-reset: t; list-style: none; padding: 0; margin: 4mm 0; }
+  .toc li { counter-increment: t; display: flex; gap: 4mm; padding: 1.5mm 0; border-bottom: 1px solid var(--line); font-size: 11pt; line-height: 1.3; }
+  .toc li::before { content: counter(t); font: 800 italic 12pt "Saira", sans-serif; color: var(--orange); width: 7mm; }
+  .toc small { color: var(--muted); display: block; font-size: 9.5pt; }
+
+  .flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 3mm; margin: 4mm 0; text-align: center; }
+  .flow div.box { border-radius: 3mm; padding: 4mm 3mm; background: var(--ice); font-size: 9.5pt; }
+  .flow div.box strong { display: block; font-size: 11pt; margin-bottom: 1mm; }
+  .flow .arrow { font-size: 18pt; color: var(--orange); font-weight: 800; }
+</style>
+</head>
+<body>
+
+<!-- ============================ VOORPAGINA ============================ -->
+<section class="cover">
+  <div class="cover__inner">
+    <img src="../../assets/img/logo.svg" alt="Joy-M">
+    <div class="eyebrow">Voor bestuursleden en vrijwilligers</div>
+    <h1>Handleiding<br>website beheren</h1>
+    <p class="sub">Zo krijg je toegang tot de website van Joy-M en pas je zelf teksten, nieuws, trainingstijden en foto's aan. Geen technische kennis nodig.</p>
+  </div>
+  <div class="cover__foot"><span>joy-m.nl</span><span>Versie november 2026</span></div>
+</section>
+
+<!-- ============================ INHOUD ============================ -->
+<section class="page">
+  <h2>In deze handleiding</h2>
+  <ol class="toc">
+    <li><div>Hoe werkt de website?<small>Het CMS, GitHub en de website: wat is wat</small></div></li>
+    <li><div>Toegang krijgen<small>Kies je route: alleen met je e-mailadres, of met een GitHub-account</small></div></li>
+    <li><div>Inloggen in het CMS<small>app.pagescms.org</small></div></li>
+    <li><div>Wegwijs in het CMS<small>Welk onderdeel hoort bij welk stuk van de website</small></div></li>
+    <li><div>Veelvoorkomende taken<small>Nieuws plaatsen, trainingstijden wijzigen, teams, pagina's, foto's, banner</small></div></li>
+    <li><div>Na het opslaan<small>Wanneer staat je wijziging online?</small></div></li>
+    <li><div>Tips, valkuilen en hulp</div></li>
+    <li><div>Voor de websitebeheerder<small>Nieuwe bestuursleden toegang geven (eenmalig per persoon)</small></div></li>
+  </ol>
+
+  <div class="note"><p>De schermen van het CMS zijn in het <strong>Engels</strong> (bijvoorbeeld <span class="btnlabel btnlabel--cms">Save</span> voor opslaan). De namen van de onderdelen, zoals <em>Nieuws</em> en <em>Trainingstijden</em>, zijn wel in het Nederlands, die hebben we zelf ingesteld.</p></div>
+
+  <h2 style="margin-top:7mm">1. Hoe werkt de website?</h2>
+  <p>De website <strong>joy-m.nl</strong> bestaat uit tekstbestanden die in een online opslag staan bij <strong>GitHub</strong>. Die bestanden pas je niet zelf aan, maar via <strong>Pages CMS</strong>: een eenvoudige beheeromgeving met invulvelden. Zodra je iets opslaat, bouwt GitHub de website automatisch opnieuw op.</p>
+  <div class="flow">
+    <div class="box"><strong>Pages CMS</strong>Jij past tekst aan en klikt op Save</div>
+    <div class="arrow">→</div>
+    <div class="box"><strong>GitHub</strong>Bewaart de wijziging (met geschiedenis)</div>
+    <div class="arrow">→</div>
+    <div class="box"><strong>joy-m.nl</strong>Binnen 1–2 minuten bijgewerkt</div>
+  </div>
+  <div class="tip"><p><strong>Je kunt niets echt kapotmaken.</strong> Elke wijziging wordt in GitHub bewaard. Gaat er toch iets mis, dan kan de websitebeheerder een eerdere versie terugzetten.</p></div>
+  <p>Sommige onderdelen van de site vullen zich <strong>automatisch</strong> en hoef je dus nooit aan te passen:</p>
+  <ul>
+    <li><strong>Wedstrijden en uitslagen</strong> komen live van basketball.nl.</li>
+    <li>De <strong>velden van het aanmeldformulier</strong> beheer je in club.basketball.nl, niet in het CMS.</li>
+  </ul>
+</section>
+
+<!-- ============================ TOEGANG ============================ -->
+<section class="page">
+  <h2>2. Toegang krijgen</h2>
+  <p class="lead">Er zijn twee manieren om in het CMS te komen. Voor de meeste bestuursleden is <strong>route A</strong> het eenvoudigst.</p>
+
+  <div class="route">
+    <div class="card card--ice">
+      <span class="badge">Aanbevolen</span>
+      <h3>Route A: met je e-mailadres</h3>
+      <p>Je hebt <strong>geen GitHub-account</strong> nodig. Geef je e-mailadres door aan de websitebeheerder; die nodigt je uit (hoofdstuk 8). Daarna log je in met een link die je per mail ontvangt (hoofdstuk 3).</p>
+      <p><strong>Geschikt voor:</strong> teksten, nieuws, trainingstijden, teams en foto's aanpassen.</p>
+    </div>
+    <div class="card">
+      <span class="badge badge--blue">Voor wie meer wil</span>
+      <h3>Route B: met een GitHub-account</h3>
+      <p>Je maakt een gratis GitHub-account aan en wordt lid van de Joy-M-organisatie op GitHub.</p>
+      <p><strong>Geschikt voor:</strong> alles uit route A, plus anderen uitnodigen en de instellingen van het CMS beheren.</p>
+    </div>
+  </div>
+
+  <h3>Route B – een GitHub-account aanmaken</h3>
+  <div class="two" style="grid-template-columns: 1.5fr 1fr">
+    <div>
+  <ol class="steps">
+    <li>Ga naar <strong>github.com/login</strong> en klik onderaan op <strong>Create an account</strong>.</li>
+    <li>Vul je <strong>e-mailadres</strong>, een <strong>wachtwoord</strong> en een <strong>gebruikersnaam</strong> in (bijvoorbeeld <code>voornaam-joym</code>). Kies bij land <em>Netherlands</em>.</li>
+    <li>Los de controlepuzzel op en vul de <strong>code</strong> in die GitHub naar je e-mailadres stuurt.</li>
+    <li>Kies het <strong>gratis</strong> account (Free). Vragen over je programmeerervaring mag je overslaan.</li>
+    <li>Stuur je <strong>GitHub-gebruikersnaam</strong> naar de websitebeheerder.</li>
+    <li>Je krijgt een mail van GitHub: <em>"…invited you to join the joy-m-basketball organization"</em>. Klik op <strong>Join</strong> (of <em>View invitation</em> en dan <strong>Join joy-m-basketball</strong>).</li>
+  </ol>
+  <div class="note" style="margin-top:1mm"><p>GitHub kan je na een tijdje vragen om <strong>tweestapsverificatie</strong> aan te zetten. Dat is een extra beveiliging met een app op je telefoon, bijvoorbeeld Google Authenticator of Microsoft Authenticator. Volg dan gewoon de stappen op het scherm.</p></div>
+    </div>
+  <figure class="avoid">
+    <div class="shot">
+      <img src="img/gh-login.jpg" alt="Inlogpagina van GitHub">
+      <div class="mark" style="left:47.5%;top:84.6%;width:27.3%;height:4.9%"><span class="b">Account aanmaken</span></div>
+    </div>
+    <figcaption>De inlogpagina van GitHub (github.com/login). Heb je nog geen account, klik dan op <em>Create an account</em>.</figcaption>
+  </figure>
+  </div>
+
+</section>
+
+<!-- ============================ INLOGGEN ============================ -->
+<section class="page">
+  <h2>3. Inloggen in het CMS</h2>
+  <p>Het CMS vind je op <strong>app.pagescms.org</strong>. Zet deze pagina bij je favorieten.</p>
+
+  <div class="two">
+    <figure>
+      <div class="shot">
+        <img src="img/cms-login.jpg" alt="Inlogscherm van Pages CMS">
+        <div class="mark" style="left:13.6%;top:23.7%;width:72.8%;height:12.6%"><span class="t">Route B: met GitHub</span></div>
+        <div class="mark" style="left:13.6%;top:53.1%;width:72.8%;height:25.6%"><span class="t">Route A: met e-mail</span></div>
+      </div>
+      <figcaption>Het inlogscherm van Pages CMS.</figcaption>
+    </figure>
+    <div>
+      <h3 style="margin-top:0">Route A – met e-mail</h3>
+      <ol class="steps">
+        <li>Vul je e-mailadres in bij <em>Email</em>.</li>
+        <li>Klik op <span class="btnlabel btnlabel--cms">Continue with email</span>.</li>
+        <li>Open de mail van Pages CMS en klik op de inloglink.</li>
+      </ol>
+      <h3>Route B – met GitHub</h3>
+      <ol class="steps">
+        <li>Klik op <span class="btnlabel btnlabel--cms">Sign in with GitHub</span>.</li>
+        <li>Log in bij GitHub als daarom gevraagd wordt.</li>
+        <li>De eerste keer vraagt GitHub of Pages CMS toegang mag hebben: klik op <strong>Authorize</strong>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <p>Na het inloggen zie je de website(s) waar je toegang toe hebt. Kies <strong>joy-m-site</strong>. Werk altijd in de branch <code>main</code>: dat is de versie die live op joy-m.nl staat.</p>
+  <div class="warn"><p>Zie je <strong>joy-m-site</strong> niet staan? Dan is je toegang nog niet (helemaal) ingesteld. Neem contact op met de websitebeheerder.</p></div>
+</section>
+
+<!-- ============================ WEGWIJS ============================ -->
+<section class="page">
+  <h2>4. Wegwijs in het CMS</h2>
+
+  <div class="mock">
+    <div class="mock__bar"><i></i><i></i><i></i><b>app.pagescms.org</b></div>
+    <div class="mock__body">
+      <div class="mock__side">
+        <div class="mock__repo">joy-m-site <span style="font-weight:400;color:#6b7785">· main</span></div>
+        <ul>
+          <li class="on">Nieuws</li><li>Pagina's</li><li>Homepage</li><li>Trainingstijden</li><li>Teams</li>
+          <li>Veelgestelde vragen</li><li>Clubbeleid (overzicht)</li><li>Menu</li><li>Instellingen &amp; contactgegevens</li>
+          <li class="sep">Media</li>
+        </ul>
+      </div>
+      <div class="mock__main">
+        <div class="mock__head"><strong>Nieuws</strong><span class="mock__btn ring">+ Add</span></div>
+        <div class="mock__row"><span>Terugblik seizoen 2024/2025</span><span>07-07-2025</span></div>
+        <div class="mock__row"><span>Maldens walking basketbal</span><span>04-03-2024</span></div>
+        <div class="mock__row"><span>Dames basketbal in Malden</span><span>04-03-2024</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="schem">Links in het CMS staat een menu met alle onderdelen; klik op een onderdeel om het te openen. Schematische weergave: zo is het CMS van Joy-M ingedeeld. Het echte scherm kan er iets anders uitzien, maar de onderdelen links hebben dezelfde namen.</p>
+
+  <h3>Welk onderdeel hoort bij welk stuk van de website?</h3>
+  <table>
+    <tr><th>Onderdeel in het CMS</th><th>Wat pas je hier aan?</th></tr>
+    <tr><td>Nieuws</td><td>Nieuwsberichten: titel, datum, foto, korte samenvatting en de tekst. De nieuwste 3 staan ook op de homepage.</td></tr>
+    <tr><td>Pagina's</td><td>De tekstpagina's: Over ons, Lid worden, Clubshop, Contact, Veilig sporten, Vertrouwenspersoon, Voorwaarden, Privacyverklaring en Bedankt.</td></tr>
+    <tr><td>Homepage</td><td>De grote kop en tekst bovenaan, het welkomstblok met de drie genummerde punten, het clubshop-blok en de oranje balk onderaan elke pagina.</td></tr>
+    <tr><td>Trainingstijden</td><td>Dagen, tijden en welke teams dan trainen. Staat op de homepage, bij Teams en bij Contact.</td></tr>
+    <tr><td>Teams</td><td>Alle teams met naam, teamcode (bijv. M18-1), competitie of recreatief, en een korte omschrijving.</td></tr>
+    <tr><td>Veelgestelde vragen</td><td>De vragen en antwoorden op de pagina Over ons.</td></tr>
+    <tr><td>Clubbeleid (overzicht)</td><td>De vier kaarten op de pagina Clubbeleid. De teksten van die pagina's zelf staan bij <em>Pagina's</em>.</td></tr>
+    <tr><td>Menu</td><td>De knoppen in het hoofdmenu. Alleen aanpassen als je weet wat je doet.</td></tr>
+    <tr><td>Instellingen &amp; contactgegevens</td><td>E-mailadres, adres van de sporthal, vertrouwenspersoon, links (clubshop, basketball.nl), de banner "in aanbouw" en het aanmeldformulier.</td></tr>
+    <tr><td>Media</td><td>Alle foto's en documenten. Hier upload je nieuwe foto's.</td></tr>
+  </table>
+</section>
+
+<section class="page">
+  <h3 style="margin-top:0">Voorbeelden: wat zie je waar op de website?</h3>
+  <div class="two">
+    <figure><img src="img/site-top.jpg" alt=""><figcaption><strong>Homepage</strong> → het bovenste blok (kop, tekst en foto). De smalle oranje balk helemaal bovenaan is de <strong>banner</strong> (bij <em>Instellingen</em>).</figcaption></figure>
+    <figure><img src="img/site-trainingen.jpg" alt=""><figcaption><strong>Trainingstijden</strong> → dagen, tijden en teams.</figcaption></figure>
+  </div>
+  <div class="two">
+    <figure><img src="img/site-teams.jpg" alt=""><figcaption><strong>Teams</strong> → naam, code, soort en omschrijving.</figcaption></figure>
+    <figure><img src="img/site-nieuws.jpg" alt=""><figcaption><strong>Nieuws</strong> → de drie nieuwste berichten.</figcaption></figure>
+  </div>
+  <div class="two">
+    <figure><img src="img/site-clubshop.jpg" alt=""><figcaption><strong>Homepage → Clubshop-blok</strong>. De link naar de shop staat bij <em>Instellingen</em>.</figcaption></figure>
+    <figure><img src="img/site-wedstrijden.jpg" alt=""><figcaption><strong>Automatisch:</strong> wedstrijden en uitslagen komen van basketball.nl. Hier hoef je niets voor te doen.</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============================ TAKEN ============================ -->
+<section class="page">
+  <h2>5. Veelvoorkomende taken</h2>
+
+  <h3>5.1 Een nieuwsbericht plaatsen</h3>
+  <ol class="steps">
+    <li>Klik links op <strong>Nieuws</strong> en daarna rechtsboven op de knop om een nieuw bericht toe te voegen (<strong>+ Add</strong>).</li>
+    <li>Vul de <strong>Titel</strong> en de <strong>Datum</strong> in. De datum bepaalt de volgorde: het nieuwste bericht staat bovenaan.</li>
+    <li>Kies bij <strong>Uitgelichte afbeelding</strong> een foto. Je kunt hier ook een nieuwe foto uploaden.</li>
+    <li>Schrijf een korte <strong>Samenvatting</strong> van 1–2 zinnen. Die verschijnt in het nieuwsoverzicht.</li>
+    <li>Schrijf het <strong>Bericht</strong>. Met de knoppen boven het tekstvak maak je tekst vet, zet je een kopje of voeg je een link of foto toe.</li>
+    <li>Klik op <span class="btnlabel btnlabel--cms">Save</span>.</li>
+  </ol>
+  <div class="mock">
+    <div class="mock__bar"><i></i><i></i><i></i><b>app.pagescms.org · Nieuws · nieuw bericht</b></div>
+    <div class="mock__main" style="position:relative">
+      <div class="mock__head"><strong>Nieuw bericht</strong><span class="mock__btn ring">Save</span></div>
+      <label>Titel *</label><div class="in">Oliebollentoernooi 2026</div>
+      <div class="two" style="gap:4mm">
+        <div><label>Datum *</label><div class="in">20-12-2026</div></div>
+        <div><label>Uitgelichte afbeelding</label><div class="in muted">Kies een afbeelding…</div></div>
+      </div>
+      <label>Samenvatting</label><div class="in">Op 20 december is weer ons gezellige oliebollentoernooi. Doe je mee?</div>
+      <label>Bericht</label><div class="tb"><span>B</span><span><i>I</i></span><span>H2</span><span>• lijst</span><span>🔗</span><span>🖼</span></div><div class="in big">Ook dit jaar organiseren we het oliebollentoernooi…</div>
+    </div>
+  </div>
+  <p class="schem">Schematische weergave van het invulscherm voor een nieuwsbericht. De voorbeeldtekst is verzonnen.</p>
+  <div class="tip"><p>Wil je een bericht later aanpassen? Klik op het bericht in de lijst, wijzig de tekst en klik weer op <strong>Save</strong>.</p></div>
+
+</section>
+
+<section class="page">
+  <h3 style="margin-top:0">5.2 Trainingstijden wijzigen</h3>
+  <ol class="steps">
+    <li>Klik links op <strong>Trainingstijden</strong>. Je ziet per dag een blok.</li>
+    <li>Pas bij een training de <strong>Tijd</strong> aan, bijvoorbeeld <code>18:00 – 19:30</code>.</li>
+    <li>Bij <strong>Teams</strong> staat per training welke teams er trainen. Voeg een team toe of haal er een weg.</li>
+    <li>Klik op <span class="btnlabel btnlabel--cms">Save</span>.</li>
+  </ol>
+  <div class="warn"><p><strong>Gebruik bij Teams precies de naam zoals bij het onderdeel Teams</strong>, bijvoorbeeld <code>U16</code> of <code>Heren senioren</code>, dus niet <code>M16-1</code> of <code>heren</code>. Alleen dan verschijnt de juiste teamcode en kleur bij de trainingstijden.</p></div>
+  <div class="mock">
+    <div class="mock__bar"><i></i><i></i><i></i><b>app.pagescms.org · Trainingstijden</b></div>
+    <div class="mock__main">
+      <div class="mock__head"><strong>Trainingstijden</strong><span class="mock__btn">Save</span></div>
+      <div class="group">
+        <label>Dag</label><div class="in">Vrijdag ▾</div>
+        <label>Trainingen</label>
+        <div class="group" style="margin-top:1mm"><label style="margin-top:0">Tijd</label><div class="in">9:45 – 10:45</div><label>Teams</label><div class="chips"><span>Walking basketbal</span></div></div>
+        <div class="group"><label style="margin-top:0">Tijd</label><div class="in ring">18:00 – 19:30</div><label>Teams</label><div class="chips ring" style="display:inline-block;padding:1mm"><span>U16</span><span>U18</span><span style="color:#9aa5b1">+ toevoegen</span></div></div>
+      </div>
+    </div>
+  </div>
+  <p class="schem">Schematische weergave van de trainingstijden voor vrijdag.</p>
+
+</section>
+
+<section class="page">
+  <h3 style="margin-top:0">5.3 Een team toevoegen of aanpassen</h3>
+  <ol class="steps">
+    <li>Klik links op <strong>Teams</strong>.</li>
+    <li>Pas een bestaand team aan, of voeg onderaan een nieuw team toe.</li>
+    <li>Vul in: <strong>Naam</strong> (bijv. <code>U14</code>), <strong>Teamcode</strong> zoals bij de NBB (bijv. <code>M14-1</code>, of leeg voor recreatieve teams), <strong>Soort</strong> (Competitie of Recreatief) en een korte <strong>Omschrijving</strong>.</li>
+    <li>Klik op <span class="btnlabel btnlabel--cms">Save</span>. Zet het team daarna ook bij <strong>Trainingstijden</strong> (zie 5.2).</li>
+  </ol>
+  <div class="note"><p>De teamcode is ook nodig voor de wedstrijden: met die code toont de website bij elke wedstrijd de juiste teamnaam.</p></div>
+
+  <h3>5.4 De tekst van een pagina aanpassen</h3>
+  <div class="two">
+    <ol class="steps">
+      <li>Klik links op <strong>Pagina's</strong> en kies de pagina, bijvoorbeeld <em>Lid worden</em>.</li>
+      <li><strong>Titel</strong> en <strong>Introductie</strong> staan bovenaan de pagina, in het blauwe vlak. Bij <strong>Inhoud</strong> staat de rest van de tekst.</li>
+      <li>Pas de tekst aan zoals in een tekstverwerker en klik op <span class="btnlabel btnlabel--cms">Save</span>.</li>
+    </ol>
+    <figure style="margin-top:0"><img src="img/site-pagina.jpg" alt=""><figcaption>De pagina Over ons. De kop en de introductie in het blauwe vlak komen uit <em>Titel</em> en <em>Introductie</em>.</figcaption></figure>
+  </div>
+
+  <h3>5.5 Een foto uploaden</h3>
+  <ol class="steps">
+    <li>Klik links op <strong>Media</strong> en upload de foto. Of upload hem direct bij een afbeeldingsveld, bijvoorbeeld bij een nieuwsbericht.</li>
+    <li>Gebruik bij voorkeur een <strong>liggende foto</strong> van maximaal ongeveer <strong>1600 pixels breed</strong>. Grotere foto's maken de site traag op telefoons.</li>
+    <li>Geef de foto een duidelijke naam, zoals <code>u12-toernooi-2026.jpg</code>.</li>
+  </ol>
+  <div class="warn"><p><strong>Let op de privacy:</strong> plaats alleen foto's van leden die daar geen bezwaar tegen hebben. Voor kinderen beslissen de ouders. Zie ook de privacyverklaring op de website.</p></div>
+</section>
+
+<section class="page">
+  <h3 style="margin-top:0">5.6 De banner "in aanbouw" aan- of uitzetten</h3>
+  <ol class="steps">
+    <li>Klik links op <strong>Instellingen &amp; contactgegevens</strong> en scrol naar <strong>Banner bovenaan de site</strong>.</li>
+    <li>Haal het vinkje bij <strong>Banner tonen</strong> weg om de banner te verbergen, of pas de tekst aan.</li>
+    <li>Klik op <span class="btnlabel btnlabel--cms">Save</span>.</li>
+  </ol>
+  <figure><img src="img/site-banner.jpg" alt=""><figcaption>De banner bovenaan elke pagina.</figcaption></figure>
+
+  <h3>5.7 Veelgestelde vragen</h3>
+  <p>Klik links op <strong>Veelgestelde vragen</strong>. Elke vraag heeft een <strong>Vraag</strong> en een <strong>Antwoord</strong>. In het antwoord kun je eenvoudige opmaak gebruiken:</p>
+  <table>
+    <tr><th>Je typt</th><th>Op de website</th></tr>
+    <tr><td><code>**belangrijk**</code></td><td><strong>belangrijk</strong> (vet)</td></tr>
+    <tr><td><code>[lid worden](/lid-worden/)</code></td><td>een link met de tekst <a>lid worden</a> naar de pagina Lid worden</td></tr>
+    <tr><td><code>[mail ons](mailto:joymbasketbal@gmail.com)</code></td><td>een link die een e-mail opent</td></tr>
+  </table>
+
+  <h3>5.8 Contactgegevens of de vertrouwenspersoon wijzigen</h3>
+  <p>Klik op <strong>Instellingen &amp; contactgegevens</strong>. Hier staan het algemene <strong>e-mailadres</strong>, het <strong>adres van de sporthal</strong> en de naam en het e-mailadres van de <strong>vertrouwenscontactpersoon</strong>. Pas je die hier aan, dan verandert het overal op de website tegelijk.</p>
+  <div class="warn"><p>Laat de velden voor het <strong>registratieformulier</strong> en de <strong>basketball.nl</strong>-koppeling staan zoals ze zijn, tenzij de websitebeheerder iets anders vraagt. Daarmee werken het aanmeldformulier en het wedstrijdschema.</p></div>
+</section>
+
+<!-- ============================ NA OPSLAAN ============================ -->
+<section class="page">
+  <h2>6. Na het opslaan</h2>
+  <ol class="steps">
+    <li>Na <span class="btnlabel btnlabel--cms">Save</span> wordt je wijziging direct in GitHub bewaard.</li>
+    <li>GitHub bouwt de website opnieuw op. Dat duurt meestal <strong>1 tot 2 minuten</strong>.</li>
+    <li>Open <strong>joy-m.nl</strong> en <strong>ververs de pagina</strong>:
+      <ul>
+        <li>Windows: <span class="kbd">Ctrl</span> + <span class="kbd">F5</span></li>
+        <li>Mac: <span class="kbd">Cmd</span> + <span class="kbd">Shift</span> + <span class="kbd">R</span></li>
+        <li>Telefoon: trek de pagina omlaag, of sluit het tabblad en open de site opnieuw.</li>
+      </ul>
+    </li>
+  </ol>
+  <div class="note"><p>Na <strong>5 minuten</strong> nog steeds de oude versie? Dan is er mogelijk iets misgegaan bij het opbouwen. Wie route B gebruikt, kan het controleren op GitHub: ga naar <strong>github.com/joy-m-basketball/joy-m-site</strong> en kijk bij het tabblad <strong>Actions</strong>. Een groen vinkje betekent gelukt, een rood kruisje betekent mislukt. Waarschuw in dat geval de websitebeheerder.</p></div>
+
+  <h2 style="margin-top:9mm">7. Tips, valkuilen en hulp</h2>
+  <div class="card card--ice avoid">
+    <h3 style="margin-top:0">Wel doen</h3>
+    <ul>
+      <li>Kijk na het opslaan altijd even op de website of het goed staat, ook op je telefoon.</li>
+      <li>Houd teksten kort en duidelijk. Veel bezoekers lezen op hun telefoon.</li>
+      <li>Spreek af wie wat bijhoudt, bijvoorbeeld één persoon voor nieuws en één voor teams en trainingen.</li>
+    </ul>
+  </div>
+  <div class="card avoid">
+    <h3 style="margin-top:0">Liever niet</h3>
+    <ul>
+      <li>Werk niet met twee personen tegelijk aan <strong>hetzelfde</strong> onderdeel. De laatste die opslaat, overschrijft de ander.</li>
+      <li>Pas het <strong>Menu</strong> of de technische instellingen niet aan zonder overleg met de websitebeheerder.</li>
+      <li>Verander de <strong>bestandsnaam</strong> van een pagina niet. Die bepaalt het webadres, en links naar die pagina werken dan niet meer.</li>
+      <li>Upload geen foto's of documenten met persoonsgegevens, zoals ledenlijsten of adressen.</li>
+    </ul>
+  </div>
+  <div class="card card--navy avoid">
+    <h3 style="margin-top:0">Hulp nodig?</h3>
+    <p style="margin:0">Kom je er niet uit of is er iets misgegaan? Neem contact op met de websitebeheerder van het bestuur, of mail naar <strong>joymbasketbal@gmail.com</strong>. Vertel erbij wat je wilde aanpassen en op welke pagina, dan kan het snel worden opgelost of teruggezet.</p>
+  </div>
+</section>
+
+<!-- ============================ BEHEERDER ============================ -->
+<section class="page">
+  <h2>8. Voor de websitebeheerder</h2>
+  <p class="lead">Dit hoofdstuk is voor wie een GitHub-account heeft met beheerrechten op de organisatie <strong>joy-m-basketball</strong>.</p>
+
+  <h3>Eenmalig: Pages CMS koppelen aan GitHub</h3>
+  <ol class="steps">
+    <li>Log in op <strong>app.pagescms.org</strong> met <strong>Sign in with GitHub</strong>.</li>
+    <li>Pages CMS vraagt de <strong>Pages CMS GitHub App</strong> te installeren. Kies de organisatie <strong>joy-m-basketball</strong> en geef toegang tot de repository <strong>joy-m-site</strong>.</li>
+    <li>Open <strong>joy-m-site</strong>. De instellingen van het CMS staan al klaar in het bestand <code>.pages.yml</code>.</li>
+  </ol>
+
+  <h3>Een bestuurslid toegang geven via route A (e-mail)</h3>
+  <ol class="steps">
+    <li>Open in Pages CMS de repository <strong>joy-m-site</strong>.</li>
+    <li>Ga naar het onderdeel voor <strong>Collaborators</strong> (medewerkers) en nodig het bestuurslid uit met zijn of haar e-mailadres.</li>
+    <li>Het bestuurslid kan daarna inloggen via <em>Continue with email</em> (hoofdstuk 3).</li>
+  </ol>
+  <div class="note"><p>Collaborators via e-mail kunnen teksten en media aanpassen, maar niet de CMS-instellingen of andere collaborators beheren. In GitHub staan hun wijzigingen op naam van de Pages CMS-app.</p></div>
+
+  <h3>Een bestuurslid toegang geven via route B (GitHub)</h3>
+  <ol class="steps">
+    <li>Ga op GitHub naar <strong>github.com/orgs/joy-m-basketball/people</strong> en klik op <strong>Invite member</strong>.</li>
+    <li>Vul de GitHub-gebruikersnaam van het bestuurslid in en kies de rol <strong>Member</strong>.</li>
+    <li>Geef daarna schrijfrechten op de website: ga naar <strong>github.com/joy-m-basketball/joy-m-site</strong> → <strong>Settings</strong> → <strong>Collaborators and teams</strong> → <strong>Add people</strong>, kies de persoon en geef de rol <strong>Write</strong>.</li>
+    <li>Het bestuurslid accepteert de uitnodiging uit de mail en kan inloggen met <em>Sign in with GitHub</em>.</li>
+  </ol>
+
+  <h3>Toegang intrekken</h3>
+  <p>Stopt iemand met het bestuur? Verwijder de persoon dan bij <em>Collaborators</em> in Pages CMS (route A), of uit de organisatie op GitHub via <em>People</em> (route B).</p>
+
+  <h3>Handig om te weten</h3>
+  <ul>
+    <li>Elke opslag in het CMS wordt een <em>commit</em> in GitHub. Onder het tabblad <strong>Actions</strong> zie je of de website goed is gebouwd.</li>
+    <li>Een fout ongedaan maken: in GitHub kun je bij <em>Commits</em> een eerdere versie van een bestand terugzetten. Laat dit eventueel doen door iemand met ervaring.</li>
+    <li>De technische uitleg staat in <code>README.md</code> in de repository.</li>
+  </ul>
+</section>
+
+</body>
+</html>

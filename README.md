@@ -4,6 +4,8 @@ De website van basketbalvereniging **Joy-M** uit Malden. Gebouwd met [Jekyll](ht
 
 ## Inhoud beheren (Pages CMS)
 
+> Uitgebreide handleiding met screenshots voor bestuursleden: [`docs/handleiding-website-beheren.pdf`](docs/handleiding-website-beheren.pdf)
+
 1. Ga naar <https://app.pagescms.org> en log in met je GitHub-account.
 2. Kies de repository `joy-m-site` (en de branch `main`).
 3. In het menu links vind je:
