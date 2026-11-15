@@ -725,7 +725,7 @@ p { margin: 0 0 1em; }
 .beleid-card__icon { display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 12px; background: var(--navy); margin-bottom: 18px; }
 .beleid-card:nth-child(2) .beleid-card__icon { background: var(--orange); }
 .beleid-card__icon .icon { fill: var(--white); width: 26px; height: 26px; }
-.beleid-card__title { font-size: 1.35rem; }
+.beleid-card__title { font-size: 1.25rem; }
 .beleid-card p { color: var(--muted); font-size: 1rem; }
 .beleid-card__more { margin-top: auto; display: inline-flex; align-items: center; gap: .4em; font-weight: 700; color: var(--navy); }
 .beleid-card:hover .beleid-card__more { color: var(--orange-dark); }
@@ -767,7 +767,8 @@ p { margin: 0 0 1em; }
 /* ---------- Robuust bij smalle schermen en grotere tekst (bijv. Safari-zoom op iPhone) ---------- */
 .stat { min-width: 0; }
 .stat__label { overflow-wrap: anywhere; hyphens: auto; -webkit-hyphens: auto; }
-.hero__title { overflow-wrap: break-word; }
+/* Kopgrootte zo gekozen dat "BASKETBAL" altijd in de hero-kolom past (zonder het woord af te breken) */
+.hero__title { font-size: clamp(3rem, 7.2vw, 5.6rem); }
 .btn { text-align: center; }
 .tabs { max-width: 100%; }
 @media (max-width: 760px) {
