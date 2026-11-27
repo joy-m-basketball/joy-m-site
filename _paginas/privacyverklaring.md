@@ -39,7 +39,7 @@ We verkopen je gegevens nooit aan derden en delen ze niet voor commerciële doel
 
 ## Hoe lang bewaren we je gegevens?
 
-We bewaren je gegevens zolang je lid bent. Na het einde van je lidmaatschap bewaren we ze niet langer dan nodig. Financiële gegevens bewaren we zeven jaar, omdat dat wettelijk verplicht is. Sta je op de wachtlijst en wil je dat niet meer, dan verwijderen we je gegevens.
+We bewaren je gegevens zolang je lid bent. Na het einde van je lidmaatschap bewaren we ze niet langer dan nodig is. Op verzoek kunnen je persoonsgegevens helemaal uit het systeem worden verwijderd. Financiële gegevens bewaren we zeven jaar, omdat dat wettelijk verplicht is. Sta je op de wachtlijst en wil je dat niet meer, dan verwijderen we op verzoek al je gegevens.
 
 ## Foto's en video's
 
